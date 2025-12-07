@@ -1,0 +1,571 @@
+import { Button } from "@/components/ui/button";
+import { Navigation } from "@/components/Navigation";
+import Footer from "@/components/Footer";
+import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
+import { ArrowRight, Sparkles, Zap, Brain, Lightbulb, Film, Gauge, PlayCircle, PenTool, Palette, FileCheck, MessageSquare, Layers, BookOpen } from "lucide-react";
+import { Link } from "react-router-dom";
+
+const Index = () => {
+  const scrollToFeatures = () => {
+    const featuresSection = document.getElementById('features');
+    if (featuresSection) {
+      featuresSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  };
+
+  return (
+    <div className="min-h-screen bg-gradient-hero flex flex-col relative overflow-hidden">
+      {/* Subtle neon glow background effects */}
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-primary/5 rounded-full blur-3xl animate-pulse-slow" />
+      <div className="absolute top-20 right-1/4 w-[400px] h-[400px] bg-secondary/5 rounded-full blur-3xl animate-pulse-slow animation-delay-400" />
+      
+      <Navigation />
+      
+      {/* Hero Section */}
+      <section className="container mx-auto px-4 pt-32 pb-20 relative z-10">
+        <div className="max-w-5xl mx-auto text-center space-y-10">
+          {/* Badge */}
+          <div className="inline-block animate-float">
+            <div className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full glass border border-primary/30 text-sm backdrop-blur-xl shadow-[0_0_20px_hsl(var(--primary)/0.2)]">
+              <Sparkles className="w-4 h-4 text-primary animate-pulse" />
+              <span className="gradient-text font-semibold">Transform Your Prompts with AI</span>
+            </div>
+          </div>
+
+          {/* Main Headline */}
+          <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold leading-[1.1] tracking-tight">
+            Turn Your Basic Ideas Into{" "}
+            <span className="gradient-text relative inline-block">
+              Brilliant AI Prompts.
+              <span className="absolute -bottom-2 left-0 right-0 h-1 bg-gradient-primary opacity-50 blur-sm animate-pulse-slow" />
+            </span>
+          </h1>
+
+          {/* Subheadline */}
+          <p className="text-xl md:text-2xl text-muted-foreground max-w-3xl mx-auto leading-relaxed font-light">
+            PromptMaster transforms your vague thoughts into <span className="text-primary/90">cinematic, structured, high-impact prompts</span> — instantly.
+          </p>
+
+          {/* CTA Buttons */}
+          <div className="flex flex-col sm:flex-row gap-5 justify-center items-center pt-6">
+            <Link to="/refine">
+              <Button 
+                size="lg" 
+                className="gap-2 text-lg px-10 py-6 h-auto font-semibold relative group overflow-hidden animate-glow hover:scale-105 transition-transform duration-300 shadow-[0_0_30px_hsl(var(--primary)/0.4)]"
+              >
+                <span className="relative z-10">Refine Your Prompt</span>
+                <ArrowRight className="w-5 h-5 relative z-10 group-hover:translate-x-1 transition-transform" />
+                <span className="absolute inset-0 bg-gradient-primary opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+              </Button>
+            </Link>
+            <Button 
+              size="lg" 
+              variant="outline" 
+              className="gap-2 text-lg px-10 py-6 h-auto font-semibold border-2 border-primary/30 hover:border-primary/50 hover:bg-primary/5 hover:shadow-[0_0_20px_hsl(var(--primary)/0.2)] transition-all duration-300 backdrop-blur-sm"
+              onClick={scrollToFeatures}
+            >
+              See How It Works
+              <PlayCircle className="w-5 h-5" />
+            </Button>
+          </div>
+        </div>
+
+      </section>
+
+      {/* Before → After Example Section */}
+      <section className="container mx-auto px-4 py-20 relative z-10">
+        <div className="max-w-6xl mx-auto">
+          <div className="glass rounded-2xl p-8 md:p-12 border border-primary/20 shadow-[0_0_40px_hsl(var(--primary)/0.1)] relative overflow-hidden">
+            {/* Subtle background glow */}
+            <div className="absolute top-0 right-0 w-64 h-64 bg-primary/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2" />
+            
+            <div className="relative z-10">
+              <div className="grid md:grid-cols-2 gap-6 md:gap-8 mb-8">
+                {/* Left Box - Basic Prompt */}
+                <div className="space-y-4">
+                  <div className="flex items-center gap-3 mb-2">
+                    <div className="h-px flex-1 bg-border/50" />
+                    <span className="text-xs font-semibold text-muted-foreground uppercase tracking-wider">Basic Prompt</span>
+                    <div className="h-px flex-1 bg-border/50" />
+                  </div>
+                  <div className="bg-muted/40 rounded-xl p-6 border border-border/50 min-h-[120px] flex items-center">
+                    <p className="text-lg text-muted-foreground italic font-light">Make a horror story</p>
+                  </div>
+                </div>
+
+                {/* Right Box - Refined Prompt */}
+                <div className="space-y-4">
+                  <div className="flex items-center gap-3 mb-2">
+                    <div className="h-px flex-1 bg-primary/30" />
+                    <span className="text-xs font-semibold text-primary uppercase tracking-wider">Refined Prompt</span>
+                    <div className="h-px flex-1 bg-primary/30" />
+                  </div>
+                  <div className="bg-primary/10 rounded-xl p-6 border border-primary/30 min-h-[120px] flex items-center relative overflow-hidden backdrop-blur-sm" style={{
+                    background: 'linear-gradient(135deg, hsl(var(--primary) / 0.1), hsl(var(--secondary) / 0.05))'
+                  }}>
+                    <p className="text-base text-foreground leading-relaxed">
+                      Create a spine-chilling horror story set in an abandoned Victorian mansion where a young journalist discovers a century-old diary — each entry materializes in blood as she reads, revealing a dark family secret. Build atmospheric tension through shadow play, creaking floorboards, and whispers from empty rooms as the mansion claims its next vessel.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              {/* Try This Example Button */}
+              <div className="flex justify-center">
+                <Link to={`/refine?example=${encodeURIComponent("Make a horror story")}`}>
+                  <Button 
+                    size="lg" 
+                    className="gap-2 text-base px-8 py-6 h-auto font-semibold relative group overflow-hidden hover:scale-105 transition-transform duration-300 shadow-[0_0_25px_hsl(var(--primary)/0.3)] hover:shadow-[0_0_35px_hsl(var(--primary)/0.5)]"
+                  >
+                    <Sparkles className="w-5 h-5" />
+                    Try This Example
+                    <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                  </Button>
+                </Link>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Features Section */}
+      <section id="features" className="container mx-auto px-4 py-20 relative z-10">
+        <div className="text-center mb-16">
+          <h2 className="text-4xl md:text-5xl font-bold mb-4">
+            Everything You Need to <span className="gradient-text">Master Prompts</span>
+          </h2>
+          <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
+            Powerful features designed to transform your ideas into high-impact AI prompts
+          </p>
+        </div>
+
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-7xl mx-auto">
+          {/* Feature 1: AI-Enhanced Prompt Engine */}
+          <div className="glass rounded-xl p-6 md:p-8 border border-primary/10 hover:border-primary/40 transition-all duration-300 hover:shadow-[0_0_30px_hsl(var(--primary)/0.3)] group relative overflow-hidden">
+            <div className="absolute inset-0 bg-gradient-primary opacity-0 group-hover:opacity-5 transition-opacity duration-300" />
+            <div className="relative z-10">
+              <div className="w-14 h-14 rounded-xl bg-primary/20 flex items-center justify-center mb-5 group-hover:scale-110 transition-transform duration-300 shadow-[0_0_20px_hsl(var(--primary)/0.3)]">
+                <Brain className="w-7 h-7 text-primary" />
+              </div>
+              <h3 className="text-xl font-bold mb-3 group-hover:text-primary transition-colors">
+                AI-Enhanced Prompt Engine
+              </h3>
+              <p className="text-muted-foreground leading-relaxed">
+                Advanced AI algorithms analyze and transform your basic ideas into structured, impactful prompts with precision and creativity.
+              </p>
+            </div>
+          </div>
+
+          {/* Feature 2: Explains What You Were Missing */}
+          <div className="glass rounded-xl p-6 md:p-8 border border-secondary/10 hover:border-secondary/40 transition-all duration-300 hover:shadow-[0_0_30px_hsl(var(--secondary)/0.3)] group relative overflow-hidden">
+            <div className="absolute inset-0 bg-gradient-primary opacity-0 group-hover:opacity-5 transition-opacity duration-300" />
+            <div className="relative z-10">
+              <div className="w-14 h-14 rounded-xl bg-secondary/20 flex items-center justify-center mb-5 group-hover:scale-110 transition-transform duration-300 shadow-[0_0_20px_hsl(var(--secondary)/0.3)]">
+                <Lightbulb className="w-7 h-7 text-secondary" />
+              </div>
+              <h3 className="text-xl font-bold mb-3 group-hover:text-secondary transition-colors">
+                Explains What You Were Missing
+              </h3>
+              <p className="text-muted-foreground leading-relaxed">
+                Learn as you go. Our AI breaks down exactly what enhancements were made and why, helping you improve your prompt-writing skills.
+              </p>
+            </div>
+          </div>
+
+          {/* Feature 3: Premium Cinematic Styles */}
+          <div className="glass rounded-xl p-6 md:p-8 border border-primary/10 hover:border-primary/40 transition-all duration-300 hover:shadow-[0_0_30px_hsl(var(--primary)/0.3)] group relative overflow-hidden">
+            <div className="absolute inset-0 bg-gradient-primary opacity-0 group-hover:opacity-5 transition-opacity duration-300" />
+            <div className="relative z-10">
+              <div className="w-14 h-14 rounded-xl bg-primary/20 flex items-center justify-center mb-5 group-hover:scale-110 transition-transform duration-300 shadow-[0_0_20px_hsl(var(--primary)/0.3)]">
+                <Film className="w-7 h-7 text-primary" />
+              </div>
+              <h3 className="text-xl font-bold mb-3 group-hover:text-primary transition-colors">
+                Premium Cinematic Styles
+              </h3>
+              <p className="text-muted-foreground leading-relaxed">
+                Choose from cinematic, professional, marketing, storytelling, and more premium styles tailored to your specific needs.
+              </p>
+            </div>
+          </div>
+
+          {/* Feature 4: Fast, Clean, and Beginner-Friendly */}
+          <div className="glass rounded-xl p-6 md:p-8 border border-secondary/10 hover:border-secondary/40 transition-all duration-300 hover:shadow-[0_0_30px_hsl(var(--secondary)/0.3)] group relative overflow-hidden">
+            <div className="absolute inset-0 bg-gradient-primary opacity-0 group-hover:opacity-5 transition-opacity duration-300" />
+            <div className="relative z-10">
+              <div className="w-14 h-14 rounded-xl bg-secondary/20 flex items-center justify-center mb-5 group-hover:scale-110 transition-transform duration-300 shadow-[0_0_20px_hsl(var(--secondary)/0.3)]">
+                <Gauge className="w-7 h-7 text-secondary" />
+              </div>
+              <h3 className="text-xl font-bold mb-3 group-hover:text-secondary transition-colors">
+                Fast, Clean, and Beginner-Friendly
+              </h3>
+              <p className="text-muted-foreground leading-relaxed">
+                Get professional results in seconds with our intuitive interface. No learning curve—just powerful results instantly.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* How It Works Section */}
+      <section className="container mx-auto px-4 py-20 relative z-10">
+        <div className="text-center mb-16">
+          <h2 className="text-4xl md:text-5xl font-bold mb-4">
+            How <span className="gradient-text">PromptMaster</span> Works
+          </h2>
+          <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
+            Transform your ideas into professional prompts in three simple steps
+          </p>
+        </div>
+
+        <div className="max-w-5xl mx-auto">
+          <div className="grid md:grid-cols-3 gap-8 md:gap-12 relative">
+            {/* Connecting Line - Hidden on mobile, shown on desktop */}
+            <div className="hidden md:block absolute top-10 left-[calc(33.333%+2rem)] right-[calc(33.333%+2rem)] h-0.5 bg-gradient-primary opacity-30" />
+            <ArrowRight className="hidden md:block absolute top-9 left-1/2 -translate-x-1/2 w-6 h-6 text-primary/50" />
+
+            {/* Step 1: Enter your prompt */}
+            <div className="relative z-10">
+              <div className="text-center space-y-6">
+                {/* Step Number & Icon */}
+                <div className="relative inline-flex items-center justify-center">
+                  <div className="absolute inset-0 bg-primary/20 rounded-full blur-xl animate-pulse-slow" />
+                  <div className="relative w-20 h-20 rounded-2xl bg-primary/20 border-2 border-primary/40 flex items-center justify-center shadow-[0_0_30px_hsl(var(--primary)/0.4)] group-hover:scale-110 transition-transform duration-300">
+                    <PenTool className="w-10 h-10 text-primary" />
+                  </div>
+                  <div className="absolute -top-2 -right-2 w-8 h-8 rounded-full bg-primary text-primary-foreground flex items-center justify-center text-sm font-bold shadow-lg">
+                    1
+                  </div>
+                </div>
+
+                {/* Step Content */}
+                <div className="glass rounded-xl p-6 border border-primary/20 hover:border-primary/40 transition-all duration-300">
+                  <h3 className="text-xl font-bold mb-3 text-primary">
+                    Enter Your Prompt
+                  </h3>
+                  <p className="text-muted-foreground leading-relaxed">
+                    Start with your basic idea or rough prompt. Type anything—we'll transform it into something brilliant.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            {/* Step 2: Choose your style */}
+            <div className="relative z-10">
+              <div className="text-center space-y-6">
+                {/* Step Number & Icon */}
+                <div className="relative inline-flex items-center justify-center">
+                  <div className="absolute inset-0 bg-secondary/20 rounded-full blur-xl animate-pulse-slow animation-delay-400" />
+                  <div className="relative w-20 h-20 rounded-2xl bg-secondary/20 border-2 border-secondary/40 flex items-center justify-center shadow-[0_0_30px_hsl(var(--secondary)/0.4)] group-hover:scale-110 transition-transform duration-300">
+                    <Palette className="w-10 h-10 text-secondary" />
+                  </div>
+                  <div className="absolute -top-2 -right-2 w-8 h-8 rounded-full bg-secondary text-secondary-foreground flex items-center justify-center text-sm font-bold shadow-lg">
+                    2
+                  </div>
+                </div>
+
+                {/* Step Content */}
+                <div className="glass rounded-xl p-6 border border-secondary/20 hover:border-secondary/40 transition-all duration-300">
+                  <h3 className="text-xl font-bold mb-3 text-secondary">
+                    Choose Your Style
+                  </h3>
+                  <p className="text-muted-foreground leading-relaxed">
+                    Select from cinematic, professional, marketing, storytelling, and more premium styles to match your needs.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            {/* Step 3: Get refined prompt + analysis */}
+            <div className="relative z-10">
+              <div className="text-center space-y-6">
+                {/* Step Number & Icon */}
+                <div className="relative inline-flex items-center justify-center">
+                  <div className="absolute inset-0 bg-primary/20 rounded-full blur-xl animate-pulse-slow animation-delay-600" />
+                  <div className="relative w-20 h-20 rounded-2xl bg-primary/20 border-2 border-primary/40 flex items-center justify-center shadow-[0_0_30px_hsl(var(--primary)/0.4)] group-hover:scale-110 transition-transform duration-300">
+                    <FileCheck className="w-10 h-10 text-primary" />
+                  </div>
+                  <div className="absolute -top-2 -right-2 w-8 h-8 rounded-full bg-primary text-primary-foreground flex items-center justify-center text-sm font-bold shadow-lg">
+                    3
+                  </div>
+                </div>
+
+                {/* Step Content */}
+                <div className="glass rounded-xl p-6 border border-primary/20 hover:border-primary/40 transition-all duration-300">
+                  <h3 className="text-xl font-bold mb-3 text-primary">
+                    Get Refined Prompt + Analysis
+                  </h3>
+                  <p className="text-muted-foreground leading-relaxed">
+                    Receive a professional, structured prompt instantly, plus a breakdown of what was enhanced and why.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Example Output Carousel Section */}
+      <section className="container mx-auto px-4 py-20 relative z-10">
+        <div className="text-center mb-16">
+          <h2 className="text-4xl md:text-5xl font-bold mb-4">
+            Explore <span className="gradient-text">Premium Styles</span>
+          </h2>
+          <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
+            See how PromptMaster transforms prompts across different styles and use cases
+          </p>
+        </div>
+
+        <div className="max-w-6xl mx-auto">
+          <Carousel
+            opts={{
+              align: "start",
+              loop: true,
+            }}
+            className="w-full"
+          >
+            <CarouselContent className="-ml-2 md:-ml-4">
+              {/* Cinematic Style */}
+              <CarouselItem className="pl-2 md:pl-4 md:basis-1/2 lg:basis-1/3">
+                <div className="glass rounded-xl p-6 h-full border border-primary/20 hover:border-primary/40 transition-all duration-300 flex flex-col">
+                  <div className="flex items-center gap-3 mb-4">
+                    <div className="w-10 h-10 rounded-lg bg-primary/20 flex items-center justify-center">
+                      <Film className="w-5 h-5 text-primary" />
+                    </div>
+                    <h3 className="text-lg font-bold text-primary">Cinematic</h3>
+                  </div>
+                  <p className="text-sm text-muted-foreground leading-relaxed mb-6 flex-grow">
+                    Create a cinematic photograph of a lone astronaut standing on a distant planet at twilight, with two moons visible in the purple-hued sky. Dramatic low-angle lighting, lens flares, anamorphic bokeh, shot on Arri Alexa, color graded with deep shadows and vibrant highlights.
+                  </p>
+                  <Link to="/refine?example=Create an epic space scene&style=cinematic" className="w-full">
+                    <Button variant="outline" className="w-full gap-2 border-primary/30 hover:bg-primary/5 hover:border-primary/50">
+                      Use This Preset
+                      <ArrowRight className="w-4 h-4" />
+                    </Button>
+                  </Link>
+                </div>
+              </CarouselItem>
+
+              {/* Dark Aesthetic Style */}
+              <CarouselItem className="pl-2 md:pl-4 md:basis-1/2 lg:basis-1/3">
+                <div className="glass rounded-xl p-6 h-full border border-secondary/20 hover:border-secondary/40 transition-all duration-300 flex flex-col">
+                  <div className="flex items-center gap-3 mb-4">
+                    <div className="w-10 h-10 rounded-lg bg-secondary/20 flex items-center justify-center">
+                      <Sparkles className="w-5 h-5 text-secondary" />
+                    </div>
+                    <h3 className="text-lg font-bold text-secondary">Dark Aesthetic</h3>
+                  </div>
+                  <p className="text-sm text-muted-foreground leading-relaxed mb-6 flex-grow">
+                    Generate a dark, moody cyberpunk street scene at night in neon-soaked rain. Noir atmosphere, deep shadows, electric blue and magenta neon signs reflecting on wet asphalt, cinematic depth of field, high contrast black and white with selective color accents.
+                  </p>
+                  <Link to="/refine?example=Make a dark futuristic city&style=dark-aesthetic" className="w-full">
+                    <Button variant="outline" className="w-full gap-2 border-secondary/30 hover:bg-secondary/5 hover:border-secondary/50">
+                      Use This Preset
+                      <ArrowRight className="w-4 h-4" />
+                    </Button>
+                  </Link>
+                </div>
+              </CarouselItem>
+
+              {/* Marketing Copy Style */}
+              <CarouselItem className="pl-2 md:pl-4 md:basis-1/2 lg:basis-1/3">
+                <div className="glass rounded-xl p-6 h-full border border-primary/20 hover:border-primary/40 transition-all duration-300 flex flex-col">
+                  <div className="flex items-center gap-3 mb-4">
+                    <div className="w-10 h-10 rounded-lg bg-primary/20 flex items-center justify-center">
+                      <Zap className="w-5 h-5 text-primary" />
+                    </div>
+                    <h3 className="text-lg font-bold text-primary">Marketing Copy</h3>
+                  </div>
+                  <p className="text-sm text-muted-foreground leading-relaxed mb-6 flex-grow">
+                    Write compelling marketing copy that highlights our AI-powered productivity tool's key benefits: seamless automation, intelligent insights, and time-saving features. Use persuasive language with clear value propositions, engaging headlines, and a strong call-to-action that drives conversions.
+                  </p>
+                  <Link to="/refine?example=Write marketing copy for a product&style=marketing" className="w-full">
+                    <Button variant="outline" className="w-full gap-2 border-primary/30 hover:bg-primary/5 hover:border-primary/50">
+                      Use This Preset
+                      <ArrowRight className="w-4 h-4" />
+                    </Button>
+                  </Link>
+                </div>
+              </CarouselItem>
+
+              {/* Storytelling Style */}
+              <CarouselItem className="pl-2 md:pl-4 md:basis-1/2 lg:basis-1/3">
+                <div className="glass rounded-xl p-6 h-full border border-secondary/20 hover:border-secondary/40 transition-all duration-300 flex flex-col">
+                  <div className="flex items-center gap-3 mb-4">
+                    <div className="w-10 h-10 rounded-lg bg-secondary/20 flex items-center justify-center">
+                      <Palette className="w-5 h-5 text-secondary" />
+                    </div>
+                    <h3 className="text-lg font-bold text-secondary">Storytelling</h3>
+                  </div>
+                  <p className="text-sm text-muted-foreground leading-relaxed mb-6 flex-grow">
+                    Craft a narrative prompt about a time traveler who discovers their own journal entries from the future, each one describing a different version of their life based on choices they haven't made yet. Explore themes of fate, free will, and the weight of decisions through vivid character development and emotional depth.
+                  </p>
+                  <Link to="/refine?example=Write a story about time travel&style=storytelling" className="w-full">
+                    <Button variant="outline" className="w-full gap-2 border-secondary/30 hover:bg-secondary/5 hover:border-secondary/50">
+                      Use This Preset
+                      <ArrowRight className="w-4 h-4" />
+                    </Button>
+                  </Link>
+                </div>
+              </CarouselItem>
+
+              {/* UI/UX Style */}
+              <CarouselItem className="pl-2 md:pl-4 md:basis-1/2 lg:basis-1/3">
+                <div className="glass rounded-xl p-6 h-full border border-primary/20 hover:border-primary/40 transition-all duration-300 flex flex-col">
+                  <div className="flex items-center gap-3 mb-4">
+                    <div className="w-10 h-10 rounded-lg bg-primary/20 flex items-center justify-center">
+                      <Gauge className="w-5 h-5 text-primary" />
+                    </div>
+                    <h3 className="text-lg font-bold text-primary">UI/UX</h3>
+                  </div>
+                  <p className="text-sm text-muted-foreground leading-relaxed mb-6 flex-grow">
+                    Design a modern, minimalist mobile app interface for a meditation and wellness app. Include a clean dashboard with breathing exercises, mood tracking, and guided meditation sessions. Focus on intuitive navigation, calming color palette (soft blues and greens), ample white space, and accessible touch targets for optimal user experience.
+                  </p>
+                  <Link to="/refine?example=Design a mobile app interface&style=ui-ux" className="w-full">
+                    <Button variant="outline" className="w-full gap-2 border-primary/30 hover:bg-primary/5 hover:border-primary/50">
+                      Use This Preset
+                      <ArrowRight className="w-4 h-4" />
+                    </Button>
+                  </Link>
+                </div>
+              </CarouselItem>
+
+              {/* Image Prompt Style */}
+              <CarouselItem className="pl-2 md:pl-4 md:basis-1/2 lg:basis-1/3">
+                <div className="glass rounded-xl p-6 h-full border border-secondary/20 hover:border-secondary/40 transition-all duration-300 flex flex-col">
+                  <div className="flex items-center gap-3 mb-4">
+                    <div className="w-10 h-10 rounded-lg bg-secondary/20 flex items-center justify-center">
+                      <FileCheck className="w-5 h-5 text-secondary" />
+                    </div>
+                    <h3 className="text-lg font-bold text-secondary">Image Prompt</h3>
+                  </div>
+                  <p className="text-sm text-muted-foreground leading-relaxed mb-6 flex-grow">
+                    Create an image of a serene Japanese zen garden at sunrise, with carefully raked sand patterns, smooth river stones, a small wooden bridge over a koi pond, cherry blossoms in soft focus, golden hour lighting, shallow depth of field, 8K resolution, photorealistic, ultra-detailed, masterpiece quality.
+                  </p>
+                  <Link to="/refine?example=Make an image of a peaceful garden&style=image-prompt" className="w-full">
+                    <Button variant="outline" className="w-full gap-2 border-secondary/30 hover:bg-secondary/5 hover:border-secondary/50">
+                      Use This Preset
+                      <ArrowRight className="w-4 h-4" />
+                    </Button>
+                  </Link>
+                </div>
+              </CarouselItem>
+            </CarouselContent>
+            <div className="flex justify-center gap-4 mt-8">
+              <CarouselPrevious className="relative left-0 -translate-x-0 static border-primary/30 hover:bg-primary/10 hover:border-primary/50" />
+              <CarouselNext className="relative right-0 translate-x-0 static border-primary/30 hover:bg-primary/10 hover:border-primary/50" />
+            </div>
+          </Carousel>
+        </div>
+      </section>
+
+      {/* Why PromptMaster Section */}
+      <section className="container mx-auto px-4 py-20 relative z-10">
+        <div className="max-w-4xl mx-auto">
+          <div className="text-center mb-12">
+            <h2 className="text-4xl md:text-5xl font-bold mb-4">
+              Why <span className="gradient-text">PromptMaster</span> Matters
+            </h2>
+            <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
+              The gap between having an idea and creating a brilliant prompt is real—and we're here to bridge it
+            </p>
+          </div>
+
+          <div className="space-y-8">
+            {/* Point 1: Struggle to express ideas */}
+            <div className="glass rounded-xl p-6 md:p-8 border border-primary/10 hover:border-primary/30 transition-all duration-300">
+              <div className="flex items-start gap-4">
+                <div className="w-12 h-12 rounded-xl bg-primary/20 flex items-center justify-center flex-shrink-0">
+                  <MessageSquare className="w-6 h-6 text-primary" />
+                </div>
+                <div>
+                  <h3 className="text-xl font-bold mb-2">People Struggle to Express Ideas Clearly</h3>
+                  <p className="text-muted-foreground leading-relaxed">
+                    You know what you want, but translating that vision into words AI can understand? That's where most people get stuck. Simple prompts lead to generic results.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            {/* Point 2: AI responds better to structured prompts */}
+            <div className="glass rounded-xl p-6 md:p-8 border border-secondary/10 hover:border-secondary/30 transition-all duration-300">
+              <div className="flex items-start gap-4">
+                <div className="w-12 h-12 rounded-xl bg-secondary/20 flex items-center justify-center flex-shrink-0">
+                  <Layers className="w-6 h-6 text-secondary" />
+                </div>
+                <div>
+                  <h3 className="text-xl font-bold mb-2">AI Responds Better to Structured Prompts</h3>
+                  <p className="text-muted-foreground leading-relaxed">
+                    When prompts include details, constraints, tone, and pacing—AI delivers exactly what you envision. Structure transforms vague requests into precise outputs.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            {/* Point 3: Most users don't know how to add details */}
+            <div className="glass rounded-xl p-6 md:p-8 border border-primary/10 hover:border-primary/30 transition-all duration-300">
+              <div className="flex items-start gap-4">
+                <div className="w-12 h-12 rounded-xl bg-primary/20 flex items-center justify-center flex-shrink-0">
+                  <Brain className="w-6 h-6 text-primary" />
+                </div>
+                <div>
+                  <h3 className="text-xl font-bold mb-2">Most Users Don't Know How to Add Details, Constraints, Tone, or Pacing</h3>
+                  <p className="text-muted-foreground leading-relaxed">
+                    It's not intuitive. What details matter? How do you control tone? What makes pacing perfect? These are skills that take time to learn—unless you see them in action.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            {/* Point 4: PromptMaster teaches by example */}
+            <div className="glass rounded-xl p-6 md:p-8 border border-secondary/10 hover:border-secondary/30 transition-all duration-300 relative overflow-hidden">
+              <div className="absolute inset-0 bg-gradient-primary opacity-0 hover:opacity-5 transition-opacity duration-300" />
+              <div className="relative flex items-start gap-4">
+                <div className="w-12 h-12 rounded-xl bg-secondary/20 flex items-center justify-center flex-shrink-0 shadow-[0_0_20px_hsl(var(--secondary)/0.3)]">
+                  <BookOpen className="w-6 h-6 text-secondary" />
+                </div>
+                <div>
+                  <h3 className="text-xl font-bold mb-2 text-secondary">PromptMaster Teaches You by Example</h3>
+                  <p className="text-muted-foreground leading-relaxed">
+                    Every refined prompt shows you exactly what changed and why. You don't just get better results—you learn the art of prompt engineering through real examples. Watch your skills evolve with every transformation.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* CTA Section */}
+      <section className="container mx-auto px-4 py-20 relative z-10">
+        <div className="max-w-4xl mx-auto text-center glass rounded-2xl p-12 md:p-16 border border-primary/20 animate-glow relative overflow-hidden">
+          {/* Enhanced glow background */}
+          <div className="absolute inset-0 bg-gradient-primary opacity-5 blur-3xl" />
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-primary/10 rounded-full blur-3xl animate-pulse-slow" />
+          
+          <div className="relative z-10">
+            <h2 className="text-4xl md:text-5xl font-bold mb-6">
+              Ready to Master <span className="gradient-text">AI Prompting?</span>
+            </h2>
+            <p className="text-muted-foreground text-lg md:text-xl mb-10 max-w-2xl mx-auto">
+              Transform your ideas into brilliant prompts with the power of AI
+            </p>
+            <Link to="/refine">
+              <Button 
+                size="lg" 
+                className="gap-2 text-lg md:text-xl px-10 py-7 h-auto font-semibold relative group overflow-hidden animate-glow hover:scale-105 transition-transform duration-300 shadow-[0_0_40px_hsl(var(--primary)/0.5)] hover:shadow-[0_0_60px_hsl(var(--primary)/0.7)]"
+              >
+                <span className="relative z-10">Start Refining for Free</span>
+                <ArrowRight className="w-5 h-5 relative z-10 group-hover:translate-x-1 transition-transform" />
+                <span className="absolute inset-0 bg-gradient-primary opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+              </Button>
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      <Footer />
+    </div>
+  );
+};
+
+export default Index;
