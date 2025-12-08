@@ -64,9 +64,11 @@ const Refine = () => {
       const apiKey = import.meta.env.VITE_GEMINI_API_KEY;
       if (!apiKey) {
         throw new Error(
-          "Missing VITE_GEMINI_API_KEY. Please add it to your .env file."
+          "Missing VITE_GEMINI_API_KEY. Please add it to your .env file or Vercel environment variables."
         );
       }
+      
+      console.log("Using Gemini API key:", apiKey.substring(0, 10) + "...");
 
       // Style-specific instructions for Gemini
       const stylePrompts: Record<string, string> = {
@@ -94,38 +96,56 @@ const Refine = () => {
       const systemPrompt =
         stylePrompts[outputStyle] || stylePrompts["cinematic"];
 
+      const requestBody = {
+        contents: [
+          {
+            parts: [
+              {
+                text: `${systemPrompt}\n\n${analysisPrompt}\n\nTransform this prompt: "${inputPrompt}"`,
+              },
+            ],
+          },
+        ],
+      };
+
+      console.log("Sending request to Gemini API with model: gemini-2.0-flash");
+      
       const response = await fetch(
-        "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent",
+        "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=" + apiKey,
         {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
-            "X-goog-api-key": apiKey,
           },
-          body: JSON.stringify({
-            contents: [
-              {
-                parts: [
-                  {
-                    text: `${systemPrompt}\n\n${analysisPrompt}\n\nTransform this prompt: "${inputPrompt}"`,
-                  },
-                ],
-              },
-            ],
-          }),
+          body: JSON.stringify(requestBody),
         }
       );
 
       if (!response.ok) {
-        const errorText = await response.text();
-        console.error("Gemini API error:", response.status, errorText);
-        throw new Error("Failed to refine prompt");
+        let errorMessage = "Failed to refine prompt";
+        try {
+          const errorData = await response.json();
+          errorMessage = errorData.error?.message || errorData.message || errorMessage;
+          console.error("Gemini API error:", response.status, errorData);
+        } catch {
+          const errorText = await response.text();
+          console.error("Gemini API error (text):", response.status, errorText);
+          errorMessage = errorText || errorMessage;
+        }
+        throw new Error(errorMessage);
       }
 
       const data = await response.json();
+      console.log("Gemini API response:", data);
+      
       const fullRefinedPrompt =
         data.candidates?.[0]?.content?.parts?.[0]?.text?.replace(/\*\*/g, "") ||
         "";
+      
+      if (!fullRefinedPrompt) {
+        throw new Error("No response from Gemini API. Please check your API key and try again.");
+      }
+      
       setRefinedPrompt(fullRefinedPrompt);
 
       // Extract enhancements if present
