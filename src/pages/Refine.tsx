@@ -90,8 +90,8 @@ const Refine = () => {
           "You are a prompt enhancement expert. Your job is to transform basic prompts into detailed, professional prompts that users can copy and use in AI image generation tools like Midjourney, DALL-E, or Stable Diffusion. Enhance with: subject details, artistic style (photorealistic, oil painting, digital art, anime), composition (rule of thirds, centered, symmetrical), lighting (natural light, studio lighting, dramatic), color palette, camera settings (35mm, wide angle, macro), mood/atmosphere, technical parameters (4K, highly detailed, sharp focus). Always start with 'Create an image of' or 'Generate'. Create a PROMPT for image generation, not a description of an existing image.",
       };
 
-      const analysisPrompt =
-        'After providing the refined prompt, add a new paragraph starting with "💡 What was enhanced:" and briefly list 2-4 key improvements you made (e.g., added lighting details, specified composition, enhanced atmosphere, included technical parameters). Be polite and constructive.';
+      const outputInstructions =
+        'IMPORTANT: Output ONLY the refined prompt directly. Do NOT include any preamble like "Here is your refined prompt:" or "Here\'s the enhanced version:" or any introductory text. Start immediately with the actual prompt content. After the refined prompt, add a new paragraph starting with "💡 What was enhanced:" and briefly list 2-4 key improvements you made.';
 
       const systemPrompt =
         stylePrompts[outputStyle] || stylePrompts["cinematic"];
@@ -101,7 +101,7 @@ const Refine = () => {
           {
             parts: [
               {
-                text: `${systemPrompt}\n\n${analysisPrompt}\n\nTransform this prompt: "${inputPrompt}"`,
+                text: `${systemPrompt}\n\n${outputInstructions}\n\nTransform this prompt: "${inputPrompt}"`,
               },
             ],
           },
