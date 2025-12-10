@@ -70,28 +70,19 @@ const Refine = () => {
       
       console.log("Using Gemini API key:", apiKey.substring(0, 10) + "...");
 
-      // Style-specific instructions for Gemini
+      // Style-specific instructions for Gemini - optimized for speed
       const stylePrompts: Record<string, string> = {
-        "cinematic":
-          "You are a prompt enhancement expert. Your job is to transform basic prompts into detailed, professional prompts that users can copy and use in AI tools. For cinematic style, enhance the prompt with: lighting details (golden hour, dramatic shadows, soft diffused light), camera angles (wide shot, close-up, Dutch angle), cinematography terms (depth of field, bokeh, film grain), atmosphere and mood. If it's for a story, add: theme, tone, setting details, character depth, plot structure. If it's for an image, add: composition, color palette, artistic style. If it's for video, add: scene transitions, pacing, visual storytelling. Create a PROMPT that someone can use, not the actual content.",
-        "professional":
-          "You are a prompt enhancement expert. Your job is to transform basic prompts into detailed, professional prompts that users can copy and use in AI tools. For professional style, enhance with: clear structure, specific terminology, detailed specifications, constraints, success criteria, and technical requirements. If it's for a story, specify: genre, narrative structure, character development, themes. If it's for code/website, specify: tech stack, components (hero section, navbar, footer, features), layout, functionality, responsive design. If it's for an image, specify: professional photography terms, composition rules. Create a PROMPT that someone can use, not the actual content.",
-        "dark-aesthetic":
-          "You are a prompt enhancement expert. Your job is to transform basic prompts into detailed, professional prompts that users can copy and use in AI tools. For dark aesthetic style, enhance with: moody atmosphere, dark color palette (blacks, deep purples, midnight blues), dramatic shadows, noir elements, high contrast, mysterious ambiance. If it's for a story, add: dark themes, psychological depth, suspense elements. If it's for an image, add: low-key lighting, dramatic composition, gothic or cyberpunk elements. Create a PROMPT that someone can use, not the actual content.",
-        "marketing":
-          "You are a prompt enhancement expert. Your job is to transform basic prompts into detailed, professional prompts that users can copy and use in AI tools. For marketing style, enhance with: target audience, emotional triggers, benefit-driven language, call-to-action elements, brand voice, persuasive techniques, value propositions. If it's for copy, specify: tone (professional/casual/urgent), key benefits, pain points addressed. If it's for visuals, add: brand colors, lifestyle imagery, aspirational elements. Create a PROMPT that someone can use, not the actual content.",
-        "storytelling":
-          "You are a prompt enhancement expert. Your job is to transform basic prompts into detailed, professional prompts that users can copy and use in AI tools. For storytelling style, enhance with: detailed character descriptions (background, motivations, conflicts), rich setting details (time period, location, atmosphere), plot structure (beginning/middle/end, conflict, resolution), themes, narrative voice, pacing, emotional arcs, dialogue style. Create a comprehensive PROMPT for generating a story, not the story itself.",
-        "ui-ux":
-          "You are a prompt enhancement expert. Your job is to transform basic prompts into detailed, professional prompts that users can copy and use in AI tools. For UI/UX style, enhance with: specific components (hero section, navigation bar, footer, sidebar, cards, buttons, forms), layout structure (grid system, spacing, alignment), user flow, interaction patterns (hover effects, animations, transitions), responsive design considerations, color scheme, typography, accessibility features, design system elements. Create a PROMPT for generating UI/UX designs, not the actual design.",
-        "video-script":
-          "You are a prompt enhancement expert. Your job is to transform basic prompts into detailed, professional prompts that users can copy and use in AI tools. For video script style, enhance with: scene-by-scene breakdown, shot descriptions (establishing shot, close-up, B-roll), transitions (fade, cut, dissolve), pacing (fast-paced, slow-burn), visual storytelling elements, audio cues (music, sound effects, voiceover), duration estimates, key messages, call-to-action. Create a PROMPT for generating video scripts, not the actual script.",
-        "image-prompt":
-          "You are a prompt enhancement expert. Your job is to transform basic prompts into detailed, professional prompts that users can copy and use in AI image generation tools like Midjourney, DALL-E, or Stable Diffusion. Enhance with: subject details, artistic style (photorealistic, oil painting, digital art, anime), composition (rule of thirds, centered, symmetrical), lighting (natural light, studio lighting, dramatic), color palette, camera settings (35mm, wide angle, macro), mood/atmosphere, technical parameters (4K, highly detailed, sharp focus). Always start with 'Create an image of' or 'Generate'. Create a PROMPT for image generation, not a description of an existing image.",
+        "cinematic": "Transform into a cinematic prompt with lighting, camera angles, cinematography terms, atmosphere. Add theme, tone, setting for stories; composition, color palette for images; scene transitions for video.",
+        "professional": "Transform into a professional prompt with clear structure, terminology, specifications. For stories: genre, narrative structure. For code/websites: tech stack, components (hero, navbar, footer), layout, responsive design. For images: photography terms, composition.",
+        "dark-aesthetic": "Transform into a dark aesthetic prompt with moody atmosphere, dark colors (blacks, purples, blues), dramatic shadows, noir elements, high contrast. Add dark themes for stories; low-key lighting for images.",
+        "marketing": "Transform into a marketing prompt with target audience, emotional triggers, benefit-driven language, call-to-action, brand voice. Specify tone, key benefits, pain points.",
+        "storytelling": "Transform into a storytelling prompt with character descriptions (background, motivations), setting details (time, location, atmosphere), plot structure (beginning/middle/end), themes, narrative voice, pacing.",
+        "ui-ux": "Transform into a UI/UX prompt with components (hero, navbar, footer, cards, buttons, forms), layout (grid, spacing), user flow, interactions (hover, animations), responsive design, color scheme, typography.",
+        "video-script": "Transform into a video script prompt with scene breakdown, shot descriptions (establishing, close-up, B-roll), transitions, pacing, visual storytelling, audio cues (music, voiceover), key messages.",
+        "image-prompt": "Transform into an image generation prompt with subject details, artistic style (photorealistic, oil painting, digital art), composition (rule of thirds, centered), lighting, color palette, camera settings (35mm, wide angle), mood, technical parameters (4K, detailed). Start with 'Create an image of' or 'Generate'.",
       };
 
-      const outputInstructions =
-        'IMPORTANT: Output ONLY the refined prompt directly. Do NOT include any preamble like "Here is your refined prompt:" or "Here\'s the enhanced version:" or any introductory text. Start immediately with the actual prompt content. After the refined prompt, add a new paragraph starting with "💡 What was enhanced:" and briefly list 2-4 key improvements you made.';
+      const outputInstructions = 'Output ONLY the refined prompt directly. No preamble. After the prompt, add "💡 What was enhanced:" with 2-4 key improvements.';
 
       const systemPrompt =
         stylePrompts[outputStyle] || stylePrompts["cinematic"];
@@ -148,37 +139,26 @@ const Refine = () => {
       
       setRefinedPrompt(fullRefinedPrompt);
 
-      // Extract enhancements if present
-      let enhancements: string[] = [];
-      const enhancementMatch = fullRefinedPrompt.match(/💡 What was enhanced:\s*(.+?)(?:\n\n|$)/is);
-      if (enhancementMatch) {
-        const enhancementText = enhancementMatch[1].trim();
-        // Split by common separators (newlines, dashes, bullets)
-        enhancements = enhancementText
-          .split(/\n|[-•]\s*/)
-          .map(e => e.trim())
-          .filter(e => e.length > 0);
-      }
-
-      // Save to prompt_history (Firestore) automatically (silent)
-      try {
-        const user = auth.currentUser;
-        await addDoc(collection(db, "prompt_history"), {
-          user_id: user?.uid || null,
-          user_prompt: inputPrompt,
-          refined_prompt: fullRefinedPrompt,
-          enhancements: enhancements.length > 0 ? enhancements : [],
-          style: outputStyle,
-          timestamp: serverTime(),
-        });
-      } catch (saveError) {
-        console.error("Error saving to history:", saveError);
-      }
-
       toast({
         title: "Prompt refined!",
         description: "Your prompt has been enhanced successfully",
       });
+
+      // Save to prompt_history (Firestore) in background - don't await
+      const enhancementMatch = fullRefinedPrompt.match(/💡 What was enhanced:\s*(.+?)(?:\n\n|$)/is);
+      const enhancements = enhancementMatch 
+        ? enhancementMatch[1].trim().split(/\n|[-•]\s*/).map(e => e.trim()).filter(e => e.length > 0)
+        : [];
+      
+      const user = auth.currentUser;
+      addDoc(collection(db, "prompt_history"), {
+        user_id: user?.uid || null,
+        user_prompt: inputPrompt,
+        refined_prompt: fullRefinedPrompt,
+        enhancements: enhancements.length > 0 ? enhancements : [],
+        style: outputStyle,
+        timestamp: serverTime(),
+      }).catch(saveError => console.error("Error saving to history:", saveError));
     } catch (error: any) {
       console.error("Error refining prompt:", error);
       toast({
