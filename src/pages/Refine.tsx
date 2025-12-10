@@ -292,9 +292,14 @@ const Refine = () => {
             <Button
               onClick={handleRefine}
               disabled={isLoading || !inputPrompt.trim()}
-              className={`w-full gap-2 text-base md:text-lg h-11 md:h-12 transition-all ${
-                inputPrompt.trim() ? 'animate-glow' : 'opacity-60'
+              className={`w-full gap-2 text-base md:text-lg h-11 md:h-12 transition-all font-bold ${
+                inputPrompt.trim() ? 'animate-glow bg-gradient-to-r from-yellow-500 to-amber-500 hover:from-yellow-400 hover:to-amber-400' : 'opacity-60'
               }`}
+              style={inputPrompt.trim() ? {
+                background: 'linear-gradient(135deg, hsl(48 100% 55%), hsl(38 100% 50%))',
+                color: 'hsl(230 40% 10%)',
+                textShadow: '0 1px 2px rgba(0,0,0,0.3)'
+              } : undefined}
             >
               {isLoading ? (
                 <div className="flex items-center gap-2">
