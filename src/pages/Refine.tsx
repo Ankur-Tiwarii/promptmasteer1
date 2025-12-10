@@ -172,7 +172,9 @@ const Refine = () => {
   };
 
   const handleCopy = () => {
-    navigator.clipboard.writeText(refinedPrompt);
+    // Only copy the refined prompt, not the "What was enhanced" section
+    const promptOnly = refinedPrompt.split('💡 What was enhanced:')[0].trim();
+    navigator.clipboard.writeText(promptOnly);
     toast({
       title: "Copied!",
       description: "Refined prompt copied to clipboard",
