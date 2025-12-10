@@ -15,9 +15,21 @@ const Index = () => {
 
   return (
     <div className="min-h-screen bg-gradient-hero flex flex-col relative overflow-hidden">
-      {/* Subtle neon glow background effects */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-primary/5 rounded-full blur-3xl animate-pulse-slow" />
-      <div className="absolute top-20 right-1/4 w-[400px] h-[400px] bg-secondary/5 rounded-full blur-3xl animate-pulse-slow animation-delay-400" />
+      {/* Cosmic 3D-inspired background */}
+      <div className="cosmic-bg">
+        <div className="starfield" />
+        <div className="planet-3d planet-1" />
+        <div className="planet-3d planet-2" />
+        <div className="planet-3d planet-3" />
+        <div className="galaxy-3d" />
+        <div className="blackhole-3d" />
+        <div className="galaxy-cluster cluster-1" />
+        <div className="galaxy-cluster cluster-2" />
+        <div className="galaxy-cluster cluster-3" />
+      </div>
+      {/* Subtle glows */}
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[520px] h-[520px] bg-primary/10 rounded-full blur-3xl animate-pulse-slow" />
+      <div className="absolute top-10 right-1/5 w-[420px] h-[420px] bg-secondary/10 rounded-full blur-3xl animate-pulse-slow animation-delay-400" />
       
       <Navigation />
       
