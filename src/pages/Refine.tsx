@@ -289,8 +289,10 @@ const Refine = () => {
             {/* Refine Button */}
             <Button
               onClick={handleRefine}
-              disabled={isLoading}
-              className="w-full gap-2 text-base md:text-lg h-11 md:h-12 animate-glow transition-all"
+              disabled={isLoading || !inputPrompt.trim()}
+              className={`w-full gap-2 text-base md:text-lg h-11 md:h-12 transition-all ${
+                inputPrompt.trim() ? 'animate-glow' : 'opacity-60'
+              }`}
             >
               {isLoading ? (
                 <div className="flex items-center gap-2">
@@ -302,7 +304,7 @@ const Refine = () => {
                 </div>
               ) : (
                 <>
-                  <Sparkles className="w-5 h-5" />
+                  <Sparkles className={`w-5 h-5 ${inputPrompt.trim() ? 'animate-pulse' : ''}`} />
                   Refine Prompt
                 </>
               )}
