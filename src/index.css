@@ -38,7 +38,8 @@ All colors MUST be HSL.
 
     --radius: 0.75rem;
 
-    --gradient-primary: linear-gradient(135deg, hsl(48 60% 32%), hsl(38 55% 28%));
+    --gradient-primary: linear-gradient(135deg, hsl(48 85% 55%), hsl(38 80% 48%));
+    --gradient-text: linear-gradient(135deg, hsl(48 90% 58%), hsl(38 85% 50%));
     --gradient-hero: radial-gradient(circle at 20% 20%, hsl(48 60% 12% / 0.12), transparent 36%), radial-gradient(circle at 80% 30%, hsl(38 55% 12% / 0.10), transparent 34%), linear-gradient(180deg, hsl(230 35% 6%), hsl(230 30% 4%));
     --glow-cyan: 0 0 36px hsl(48 60% 32% / 0.18);
     --glow-purple: 0 0 36px hsl(38 55% 28% / 0.15);
@@ -72,10 +73,12 @@ All colors MUST be HSL.
   }
 
   .gradient-text {
-    background: var(--gradient-primary);
+    background: var(--gradient-text);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
+    font-weight: 700;
+    filter: brightness(1.1);
   }
 
   .animate-float {
