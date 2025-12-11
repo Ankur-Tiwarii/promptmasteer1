@@ -12,6 +12,9 @@ import History from "./pages/History";
 import Presets from "./pages/Presets";
 import Courses from "./pages/Courses";
 import Teach from "./pages/Teach";
+import Community from "./pages/Community";
+import Upload from "./pages/Upload";
+import Creator from "./pages/Creator";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -30,6 +33,9 @@ const App = () => (
           <Route path="/history" element={<History />} />
           <Route path="/courses" element={<Courses />} />
           <Route path="/teach" element={<Teach />} />
+          <Route path="/community" element={<Community />} />
+          <Route path="/upload" element={<Upload />} />
+          <Route path="/creator/:username" element={<Creator />} />
           <Route path="/auth" element={<Auth />} />
           <Route path="/auth/callback" element={<AuthCallback />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}

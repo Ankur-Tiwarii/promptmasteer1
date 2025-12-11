@@ -7,42 +7,93 @@ export type Json =
   | Json[]
 
 export type Database = {
-  // Allows to automatically instantiate createClient with right options
-  // instead of createClient<Database, { PostgrestVersion: 'XX' }>(URL, KEY)
-  __InternalSupabase: {
-    PostgrestVersion: "13.0.5"
-  }
   public: {
     Tables: {
-      prompts: {
+      profiles: {
         Row: {
-          created_at: string
           id: string
-          original_prompt: string
-          refined_prompt: string
-          style: string
-          updated_at: string
           user_id: string
+          username: string
+          email: string
+          avatar_url: string | null
+          bio: string | null
+          links: Json
+          created_at: string
         }
         Insert: {
-          created_at?: string
           id?: string
-          original_prompt: string
-          refined_prompt: string
-          style: string
-          updated_at?: string
           user_id: string
+          username: string
+          email: string
+          avatar_url?: string | null
+          bio?: string | null
+          links?: Json
+          created_at?: string
         }
         Update: {
-          created_at?: string
           id?: string
-          original_prompt?: string
-          refined_prompt?: string
-          style?: string
-          updated_at?: string
           user_id?: string
+          username?: string
+          email?: string
+          avatar_url?: string | null
+          bio?: string | null
+          links?: Json
+          created_at?: string
         }
         Relationships: []
+      }
+      user_prompts: {
+        Row: {
+          id: string
+          creator_id: string
+          title: string
+          category: string
+          prompt_text: string
+          image_url: string | null
+          tags: string[]
+          is_public: boolean
+          created_at: string
+          copied_count: number
+          views_count: number
+          likes_count: number
+        }
+        Insert: {
+          id?: string
+          creator_id: string
+          title: string
+          category: string
+          prompt_text: string
+          image_url?: string | null
+          tags?: string[]
+          is_public?: boolean
+          created_at?: string
+          copied_count?: number
+          views_count?: number
+          likes_count?: number
+        }
+        Update: {
+          id?: string
+          creator_id?: string
+          title?: string
+          category?: string
+          prompt_text?: string
+          image_url?: string | null
+          tags?: string[]
+          is_public?: boolean
+          created_at?: string
+          copied_count?: number
+          views_count?: number
+          likes_count?: number
+        }
+        Relationships: [
+          {
+            foreignKeyName: "user_prompts_creator_id_fkey"
+            columns: ["creator_id"]
+            isOneToOne: false
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          }
+        ]
       }
     }
     Views: {

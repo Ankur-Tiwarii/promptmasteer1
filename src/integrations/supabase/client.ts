@@ -1,4 +1,8 @@
-// Supabase has been removed from this project in favor of Firebase.
-// This file is kept only to avoid import errors if any old code remains.
-// Please migrate any remaining Supabase usage to Firebase (see src/firebase.ts)
-// and then you can safely delete this file.
+import { createClient } from '@supabase/supabase-js'
+import type { Database } from './types'
+
+const supabaseUrl = import.meta.env.VITE_SUPABASE_URL || 'https://placeholder.supabase.co'
+const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY || 'placeholder-key'
+
+// Create client with placeholder values if env vars not set
+export const supabase = createClient<Database>(supabaseUrl, supabaseAnonKey)
