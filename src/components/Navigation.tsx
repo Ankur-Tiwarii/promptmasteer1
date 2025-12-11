@@ -1,6 +1,6 @@
 import { Link, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { Sparkles, Home, LayoutDashboard, LogIn, LogOut, History, BookOpen } from "lucide-react";
+import { Sparkles, Home, LayoutDashboard, LogIn, LogOut, History, BookOpen, Layers } from "lucide-react";
 import { useEffect, useState } from "react";
 import { useToast } from "@/hooks/use-toast";
 import { auth } from "@/firebase";
@@ -53,6 +53,16 @@ export const Navigation = () => {
             }`}
           >
             Refine Prompt
+          </Link>
+
+          <Link
+            to="/presets"
+            className={`hidden sm:flex items-center gap-2 text-sm font-medium transition-colors ${
+              location.pathname === "/presets" ? "text-primary" : "text-muted-foreground hover:text-primary"
+            }`}
+          >
+            <Layers className="w-4 h-4" />
+            Presets
           </Link>
 
           <Link

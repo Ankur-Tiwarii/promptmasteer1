@@ -30,12 +30,20 @@ const Refine = () => {
   const [isLoading, setIsLoading] = useState(false);
   const { toast } = useToast();
 
-  // Check for example prompt and style in URL params
+  // Check for example prompt and style in URL params, and preset prompts from localStorage
   useEffect(() => {
     const examplePrompt = searchParams.get("example");
     const styleParam = searchParams.get("style");
+    const presetPrompt = localStorage.getItem("presetPrompt");
     
-    if (examplePrompt) {
+    if (presetPrompt) {
+      setInputPrompt(presetPrompt);
+      localStorage.removeItem("presetPrompt");
+      // Smooth scroll to the input card
+      setTimeout(() => {
+        document.querySelector('.refine-card')?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }, 100);
+    } else if (examplePrompt) {
       setInputPrompt(decodeURIComponent(examplePrompt));
     }
     
@@ -259,7 +267,7 @@ const Refine = () => {
             </div>
           </Card>
 
-          <Card className="glass border-primary/10 p-5 md:p-6 space-y-5">
+          <Card className="glass border-primary/10 p-5 md:p-6 space-y-5 refine-card">
             {/* Input Section */}
             <div className="space-y-2">
               <label className="text-sm font-medium">Your Prompt</label>

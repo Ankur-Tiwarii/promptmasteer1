@@ -9,6 +9,7 @@ import Dashboard from "./pages/Dashboard";
 import Auth from "./pages/Auth";
 import AuthCallback from "./pages/AuthCallback";
 import History from "./pages/History";
+import Presets from "./pages/Presets";
 import Courses from "./pages/Courses";
 import Teach from "./pages/Teach";
 import NotFound from "./pages/NotFound";
@@ -24,6 +25,7 @@ const App = () => (
         <Routes>
           <Route path="/" element={<Index />} />
           <Route path="/refine" element={<Refine />} />
+          <Route path="/presets" element={<Presets />} />
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/history" element={<History />} />
           <Route path="/courses" element={<Courses />} />
