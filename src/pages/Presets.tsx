@@ -10,16 +10,16 @@ import { presets } from "@/data/presets";
 
 const categories = [
   "All",
-  "Image Prompts",
-  "Storytelling",
-  "Café / Aesthetic",
-  "Anime / Stylized",
-  "UI/UX Design",
-  "Startup / Branding",
-  "Marketing / Ad Copy",
-  "Product Photography",
-  "Website Templates",
-  "YouTube Script Prompts",
+  "🔥 Nano Banana Viral",
+  "🎥 VEO-3 Cinematic",
+  "🖼 Ultra Aesthetic Art",
+  "🌃 Cyberpunk / Neon",
+  "🧪 Product Photography",
+  "🎬 Cinematic Storytelling",
+  "🤖 AI Meme Generator",
+  "🏠 Interior & Architecture",
+  "🧘 Minimal Lifestyle",
+  "📚 Story / Novel / Horror",
 ];
 
 const Presets = () => {
