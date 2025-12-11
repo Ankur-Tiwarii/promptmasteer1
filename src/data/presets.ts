@@ -48,7 +48,6 @@ export const presets: Preset[] = [
     prompt: "Design a modern analytics dashboard UI with: dark mode theme, sidebar navigation with icons, main content area showing data visualizations (line charts, bar graphs, pie charts), card-based layout with subtle shadows, color scheme of deep blues and cyan accents, clean typography using Inter font, responsive grid system, glassmorphism effects on cards, micro-interactions on hover, professional and minimalist aesthetic.",
     image: "https://picsum.photos/seed/dashboard1/400/225",
   },
-];
   {
     id: 6,
     title: "Tech Startup Landing Page",
