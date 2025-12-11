@@ -17,11 +17,11 @@ All colors MUST be HSL.
     --popover: 230 28% 8%;
     --popover-foreground: 48 60% 90%;
 
-    --primary: 48 60% 32%; /* more balanced yellow */
-    --primary-foreground: 230 40% 10%;
+    --primary: 48 80% 45%; /* brighter gold */
+    --primary-foreground: 230 40% 8%;
 
-    --secondary: 38 55% 28%; /* softer amber */
-    --secondary-foreground: 48 60% 85%;
+    --secondary: 38 75% 40%; /* brighter amber */
+    --secondary-foreground: 48 60% 90%;
 
     --muted: 230 22% 10%;
     --muted-foreground: 48 25% 65%;
@@ -38,8 +38,8 @@ All colors MUST be HSL.
 
     --radius: 0.75rem;
 
-    --gradient-primary: linear-gradient(135deg, hsl(48 85% 55%), hsl(38 80% 48%));
-    --gradient-text: linear-gradient(135deg, hsl(48 90% 58%), hsl(38 85% 50%));
+    --gradient-primary: linear-gradient(135deg, hsl(48 90% 58%), hsl(38 85% 50%));
+    --gradient-text: linear-gradient(135deg, hsl(48 95% 62%), hsl(38 90% 55%));
     --gradient-hero: radial-gradient(circle at 20% 20%, hsl(48 60% 12% / 0.12), transparent 36%), radial-gradient(circle at 80% 30%, hsl(38 55% 12% / 0.10), transparent 34%), linear-gradient(180deg, hsl(230 35% 6%), hsl(230 30% 4%));
     --glow-cyan: 0 0 36px hsl(48 60% 32% / 0.18);
     --glow-purple: 0 0 36px hsl(38 55% 28% / 0.15);
