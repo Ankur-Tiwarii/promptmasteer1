@@ -52,7 +52,7 @@ export const Navigation = () => {
   };
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 border-b border-border/50 glass">
+    <nav className="fixed top-0 left-0 right-0 z-[9998] border-b border-border/50 glass">
       <div className="container mx-auto px-4 h-16 md:h-20 flex items-center justify-between">
         {/* Logo */}
         <Link to="/" className="flex items-center gap-2 text-lg md:text-xl font-bold gradient-text hover:opacity-90 transition-opacity">
@@ -100,7 +100,7 @@ export const Navigation = () => {
         {/* Mobile Menu Button */}
         <button
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-          className="md:hidden p-2 rounded-lg hover:bg-primary/10 transition-colors"
+          className="md:hidden p-3 rounded-lg hover:bg-primary/10 transition-colors bg-primary/5 border border-primary/20"
           aria-label="Toggle menu"
         >
           {mobileMenuOpen ? (
@@ -113,91 +113,91 @@ export const Navigation = () => {
 
       {/* Mobile Menu Overlay - Solid Black Background */}
       {mobileMenuOpen && (
-        <div className="md:hidden fixed inset-0 top-16 z-[100] bg-[#0a0a12] border-t border-primary/20">
-          <div className="px-6 py-8 flex flex-col gap-4 h-full overflow-y-auto">
+        <div className="md:hidden fixed inset-0 top-16 z-[9999] bg-[#0a0a12] border-t border-primary/20 min-h-screen">
+          <div className="px-6 py-8 flex flex-col gap-4 min-h-full overflow-y-auto">
             {/* Navigation Links */}
-            <div className="space-y-2">
+            <div className="space-y-3">
               <Link
                 to="/"
                 onClick={() => setMobileMenuOpen(false)}
-                className={`flex items-center gap-3 text-base font-medium py-3 px-4 rounded-xl transition-all ${
-                  location.pathname === "/" ? "text-primary bg-primary/15" : "text-foreground hover:bg-primary/10"
+                className={`flex items-center gap-4 text-lg font-medium py-4 px-5 rounded-xl transition-all border ${
+                  location.pathname === "/" ? "text-primary bg-primary/15 border-primary/30" : "text-foreground hover:bg-primary/10 border-transparent hover:border-primary/20"
                 }`}
               >
-                <Home className="w-5 h-5" />
+                <Home className="w-6 h-6" />
                 Home
               </Link>
               <Link
                 to="/refine"
                 onClick={() => setMobileMenuOpen(false)}
-                className={`flex items-center gap-3 text-base font-medium py-3 px-4 rounded-xl transition-all ${
-                  location.pathname === "/refine" ? "text-primary bg-primary/15" : "text-foreground hover:bg-primary/10"
+                className={`flex items-center gap-4 text-lg font-medium py-4 px-5 rounded-xl transition-all border ${
+                  location.pathname === "/refine" ? "text-primary bg-primary/15 border-primary/30" : "text-foreground hover:bg-primary/10 border-transparent hover:border-primary/20"
                 }`}
               >
-                <Sparkles className="w-5 h-5" />
+                <Sparkles className="w-6 h-6" />
                 Refine Prompt
               </Link>
               <Link
                 to="/presets"
                 onClick={() => setMobileMenuOpen(false)}
-                className={`flex items-center gap-3 text-base font-medium py-3 px-4 rounded-xl transition-all ${
-                  location.pathname === "/presets" ? "text-primary bg-primary/15" : "text-foreground hover:bg-primary/10"
+                className={`flex items-center gap-4 text-lg font-medium py-4 px-5 rounded-xl transition-all border ${
+                  location.pathname === "/presets" ? "text-primary bg-primary/15 border-primary/30" : "text-foreground hover:bg-primary/10 border-transparent hover:border-primary/20"
                 }`}
               >
-                <Layers className="w-5 h-5" />
+                <Layers className="w-6 h-6" />
                 Master Prompts
               </Link>
               <Link
                 to="/courses"
                 onClick={() => setMobileMenuOpen(false)}
-                className={`flex items-center gap-3 text-base font-medium py-3 px-4 rounded-xl transition-all ${
-                  location.pathname === "/courses" ? "text-primary bg-primary/15" : "text-foreground hover:bg-primary/10"
+                className={`flex items-center gap-4 text-lg font-medium py-4 px-5 rounded-xl transition-all border ${
+                  location.pathname === "/courses" ? "text-primary bg-primary/15 border-primary/30" : "text-foreground hover:bg-primary/10 border-transparent hover:border-primary/20"
                 }`}
               >
-                <BookOpen className="w-5 h-5" />
+                <BookOpen className="w-6 h-6" />
                 Courses
               </Link>
               <Link
                 to="/community"
                 onClick={() => setMobileMenuOpen(false)}
-                className={`flex items-center gap-3 text-base font-medium py-3 px-4 rounded-xl transition-all ${
-                  location.pathname === "/community" ? "text-primary bg-primary/15" : "text-foreground hover:bg-primary/10"
+                className={`flex items-center gap-4 text-lg font-medium py-4 px-5 rounded-xl transition-all border ${
+                  location.pathname === "/community" ? "text-primary bg-primary/15 border-primary/30" : "text-foreground hover:bg-primary/10 border-transparent hover:border-primary/20"
                 }`}
               >
-                <Users className="w-5 h-5" />
+                <Users className="w-6 h-6" />
                 Community
               </Link>
               {user && (
                 <Link
                   to="/upload"
                   onClick={() => setMobileMenuOpen(false)}
-                  className={`flex items-center gap-3 text-base font-medium py-3 px-4 rounded-xl transition-all ${
-                    location.pathname === "/upload" ? "text-primary bg-primary/15" : "text-foreground hover:bg-primary/10"
+                  className={`flex items-center gap-4 text-lg font-medium py-4 px-5 rounded-xl transition-all border ${
+                    location.pathname === "/upload" ? "text-primary bg-primary/15 border-primary/30" : "text-foreground hover:bg-primary/10 border-transparent hover:border-primary/20"
                   }`}
                 >
-                  <Upload className="w-5 h-5" />
+                  <Upload className="w-6 h-6" />
                   Upload
                 </Link>
               )}
               <Link
                 to="/history"
                 onClick={() => setMobileMenuOpen(false)}
-                className={`flex items-center gap-3 text-base font-medium py-3 px-4 rounded-xl transition-all ${
-                  location.pathname === "/history" ? "text-primary bg-primary/15" : "text-foreground hover:bg-primary/10"
+                className={`flex items-center gap-4 text-lg font-medium py-4 px-5 rounded-xl transition-all border ${
+                  location.pathname === "/history" ? "text-primary bg-primary/15 border-primary/30" : "text-foreground hover:bg-primary/10 border-transparent hover:border-primary/20"
                 }`}
               >
-                <History className="w-5 h-5" />
+                <History className="w-6 h-6" />
                 History
               </Link>
               {user && (
                 <Link
                   to="/dashboard"
                   onClick={() => setMobileMenuOpen(false)}
-                  className={`flex items-center gap-3 text-base font-medium py-3 px-4 rounded-xl transition-all ${
-                    location.pathname === "/dashboard" ? "text-primary bg-primary/15" : "text-foreground hover:bg-primary/10"
+                  className={`flex items-center gap-4 text-lg font-medium py-4 px-5 rounded-xl transition-all border ${
+                    location.pathname === "/dashboard" ? "text-primary bg-primary/15 border-primary/30" : "text-foreground hover:bg-primary/10 border-transparent hover:border-primary/20"
                   }`}
                 >
-                  <LayoutDashboard className="w-5 h-5" />
+                  <LayoutDashboard className="w-6 h-6" />
                   Dashboard
                 </Link>
               )}
@@ -207,27 +207,27 @@ export const Navigation = () => {
             <div className="h-px bg-primary/20 my-4" />
 
             {/* Auth Section */}
-            <div className="space-y-3">
+            <div className="space-y-4 mt-6">
               {user ? (
                 <Button 
                   variant="outline" 
                   onClick={handleSignOut} 
-                  className="w-full gap-2 justify-center py-6 text-base"
+                  className="w-full gap-3 justify-center py-7 text-lg font-semibold border-2"
                 >
-                  <LogOut className="w-5 h-5" />
+                  <LogOut className="w-6 h-6" />
                   Sign Out
                 </Button>
               ) : (
                 <>
                   <Link to="/auth" onClick={() => setMobileMenuOpen(false)} className="block">
-                    <Button variant="outline" className="w-full gap-2 justify-center py-6 text-base">
-                      <LogIn className="w-5 h-5" />
+                    <Button variant="outline" className="w-full gap-3 justify-center py-7 text-lg font-semibold border-2">
+                      <LogIn className="w-6 h-6" />
                       Sign In
                     </Button>
                   </Link>
                   <Link to="/auth" onClick={() => setMobileMenuOpen(false)} className="block">
-                    <Button className="w-full gap-2 justify-center py-6 text-base">
-                      <Sparkles className="w-5 h-5" />
+                    <Button className="w-full gap-3 justify-center py-7 text-lg font-semibold">
+                      <Sparkles className="w-6 h-6" />
                       Start Free
                     </Button>
                   </Link>
