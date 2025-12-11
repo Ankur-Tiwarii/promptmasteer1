@@ -269,11 +269,11 @@ const Index = () => {
               <div className="w-10 h-10 md:w-14 md:h-14 rounded-lg md:rounded-xl bg-primary/20 flex items-center justify-center mb-3 md:mb-5 group-hover:scale-110 transition-transform duration-300 shadow-[0_0_20px_hsl(var(--primary)/0.3)]">
                 <Brain className="w-5 h-5 md:w-7 md:h-7 text-primary" />
               </div>
-              <h3 className="text-sm md:text-xl font-bold mb-2 md:mb-3 group-hover:text-primary transition-colors duration-300">
+              <h3 className="text-xs sm:text-sm md:text-xl font-bold mb-1 md:mb-3 group-hover:text-primary transition-colors duration-300">
                 AI-Enhanced Engine
               </h3>
-              <p className="text-xs md:text-base text-muted-foreground leading-relaxed hidden sm:block">
-                Advanced AI algorithms transform your basic ideas into structured, impactful prompts.
+              <p className="text-[10px] sm:text-xs md:text-base text-muted-foreground leading-relaxed line-clamp-2 sm:line-clamp-none">
+                Transform basic ideas into impactful prompts.
               </p>
             </div>
           </div>
@@ -285,11 +285,11 @@ const Index = () => {
               <div className="w-10 h-10 md:w-14 md:h-14 rounded-lg md:rounded-xl bg-secondary/20 flex items-center justify-center mb-3 md:mb-5 group-hover:scale-110 transition-transform duration-300 shadow-[0_0_20px_hsl(var(--secondary)/0.3)]">
                 <Lightbulb className="w-5 h-5 md:w-7 md:h-7 text-secondary" />
               </div>
-              <h3 className="text-sm md:text-xl font-bold mb-2 md:mb-3 group-hover:text-secondary transition-colors duration-300">
+              <h3 className="text-xs sm:text-sm md:text-xl font-bold mb-1 md:mb-3 group-hover:text-secondary transition-colors duration-300">
                 Learn As You Go
               </h3>
-              <p className="text-xs md:text-base text-muted-foreground leading-relaxed hidden sm:block">
-                Our AI breaks down exactly what enhancements were made and why.
+              <p className="text-[10px] sm:text-xs md:text-base text-muted-foreground leading-relaxed line-clamp-2 sm:line-clamp-none">
+                See what enhancements were made and why.
               </p>
             </div>
           </div>
@@ -301,11 +301,11 @@ const Index = () => {
               <div className="w-10 h-10 md:w-14 md:h-14 rounded-lg md:rounded-xl bg-primary/20 flex items-center justify-center mb-3 md:mb-5 group-hover:scale-110 transition-transform duration-300 shadow-[0_0_20px_hsl(var(--primary)/0.3)]">
                 <Film className="w-5 h-5 md:w-7 md:h-7 text-primary" />
               </div>
-              <h3 className="text-sm md:text-xl font-bold mb-2 md:mb-3 group-hover:text-primary transition-colors duration-300">
+              <h3 className="text-xs sm:text-sm md:text-xl font-bold mb-1 md:mb-3 group-hover:text-primary transition-colors duration-300">
                 Cinematic Styles
               </h3>
-              <p className="text-xs md:text-base text-muted-foreground leading-relaxed hidden sm:block">
-                Choose from cinematic, professional, marketing, and more premium styles.
+              <p className="text-[10px] sm:text-xs md:text-base text-muted-foreground leading-relaxed line-clamp-2 sm:line-clamp-none">
+                Premium styles for every use case.
               </p>
             </div>
           </div>
@@ -317,10 +317,10 @@ const Index = () => {
               <div className="w-10 h-10 md:w-14 md:h-14 rounded-lg md:rounded-xl bg-secondary/20 flex items-center justify-center mb-3 md:mb-5 group-hover:scale-110 transition-transform duration-300 shadow-[0_0_20px_hsl(var(--secondary)/0.3)]">
                 <Gauge className="w-5 h-5 md:w-7 md:h-7 text-secondary" />
               </div>
-              <h3 className="text-sm md:text-xl font-bold mb-2 md:mb-3 group-hover:text-secondary transition-colors duration-300">
+              <h3 className="text-xs sm:text-sm md:text-xl font-bold mb-1 md:mb-3 group-hover:text-secondary transition-colors duration-300">
                 Fast & Easy
               </h3>
-              <p className="text-xs md:text-base text-muted-foreground leading-relaxed hidden sm:block">
+              <p className="text-[10px] sm:text-xs md:text-base text-muted-foreground leading-relaxed line-clamp-2 sm:line-clamp-none">
                 Get professional results in seconds with our intuitive interface.
               </p>
             </div>
@@ -360,11 +360,11 @@ const Index = () => {
                 </div>
 
                 {/* Step Content */}
-                <div className="glass rounded-xl p-6 border border-primary/20 hover:border-primary/40 transition-all duration-300 hover:-translate-y-1">
-                  <h3 className="text-xl font-bold mb-3 text-primary">
+                <div className="glass rounded-lg md:rounded-xl p-4 md:p-6 border border-primary/20 hover:border-primary/40 transition-all duration-300 hover:-translate-y-1">
+                  <h3 className="text-lg md:text-xl font-bold mb-2 md:mb-3 text-primary">
                     Enter Your Prompt
                   </h3>
-                  <p className="text-muted-foreground leading-relaxed">
+                  <p className="text-sm md:text-base text-muted-foreground leading-relaxed">
                     Start with your basic idea or rough prompt. Type anything—we'll transform it into something brilliant.
                   </p>
                 </div>
@@ -386,11 +386,11 @@ const Index = () => {
                 </div>
 
                 {/* Step Content */}
-                <div className="glass rounded-xl p-6 border border-secondary/20 hover:border-secondary/40 transition-all duration-300 hover:-translate-y-1">
-                  <h3 className="text-xl font-bold mb-3 text-secondary">
+                <div className="glass rounded-lg md:rounded-xl p-4 md:p-6 border border-secondary/20 hover:border-secondary/40 transition-all duration-300 hover:-translate-y-1">
+                  <h3 className="text-lg md:text-xl font-bold mb-2 md:mb-3 text-secondary">
                     Choose Your Style
                   </h3>
-                  <p className="text-muted-foreground leading-relaxed">
+                  <p className="text-sm md:text-base text-muted-foreground leading-relaxed">
                     Select from cinematic, professional, marketing, storytelling, and more premium styles to match your needs.
                   </p>
                 </div>
@@ -412,11 +412,11 @@ const Index = () => {
                 </div>
 
                 {/* Step Content */}
-                <div className="glass rounded-xl p-6 border border-primary/20 hover:border-primary/40 transition-all duration-300 hover:-translate-y-1">
-                  <h3 className="text-xl font-bold mb-3 text-primary">
+                <div className="glass rounded-lg md:rounded-xl p-4 md:p-6 border border-primary/20 hover:border-primary/40 transition-all duration-300 hover:-translate-y-1">
+                  <h3 className="text-lg md:text-xl font-bold mb-2 md:mb-3 text-primary">
                     Get Refined Prompt + Analysis
                   </h3>
-                  <p className="text-muted-foreground leading-relaxed">
+                  <p className="text-sm md:text-base text-muted-foreground leading-relaxed">
                     Receive a professional, structured prompt instantly, plus a breakdown of what was enhanced and why.
                   </p>
                 </div>
@@ -428,12 +428,12 @@ const Index = () => {
 
 
       {/* Example Output Carousel Section */}
-      <section className="container mx-auto px-4 py-20 relative z-10">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold mb-4">
+      <section className="container mx-auto px-4 py-12 md:py-20 relative z-10">
+        <div className="text-center mb-10 md:mb-16">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-3 md:mb-4 px-2">
             Explore <span className="gradient-text">Premium Styles</span>
           </h2>
-          <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
+          <p className="text-muted-foreground text-sm md:text-lg max-w-2xl mx-auto px-4">
             See how PromptMaster transforms prompts across different styles and use cases
           </p>
         </div>
@@ -582,27 +582,27 @@ const Index = () => {
       </section>
 
       {/* Why PromptMaster Section */}
-      <section className="container mx-auto px-4 py-20 relative z-10">
+      <section className="container mx-auto px-4 py-12 md:py-20 relative z-10">
         <div className="max-w-4xl mx-auto">
-          <div className="text-center mb-12">
-            <h2 className="text-4xl md:text-5xl font-bold mb-4">
+          <div className="text-center mb-8 md:mb-12">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-3 md:mb-4 px-2">
               Why <span className="gradient-text">PromptMaster</span> Matters
             </h2>
-            <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
+            <p className="text-muted-foreground text-sm md:text-lg max-w-2xl mx-auto px-4">
               The gap between having an idea and creating a brilliant prompt is real—and we're here to bridge it
             </p>
           </div>
 
-          <div className="space-y-6">
+          <div className="space-y-4 md:space-y-6">
             {/* Point 1: Struggle to express ideas */}
-            <div className="glass rounded-xl p-6 md:p-8 border border-primary/10 hover:border-primary/30 transition-all duration-300 hover:-translate-y-0.5">
-              <div className="flex items-start gap-4">
-                <div className="w-12 h-12 rounded-xl bg-primary/20 flex items-center justify-center flex-shrink-0">
-                  <MessageSquare className="w-6 h-6 text-primary" />
+            <div className="glass rounded-lg md:rounded-xl p-4 md:p-8 border border-primary/10 hover:border-primary/30 transition-all duration-300 hover:-translate-y-0.5">
+              <div className="flex items-start gap-3 md:gap-4">
+                <div className="w-10 h-10 md:w-12 md:h-12 rounded-lg md:rounded-xl bg-primary/20 flex items-center justify-center flex-shrink-0">
+                  <MessageSquare className="w-5 h-5 md:w-6 md:h-6 text-primary" />
                 </div>
                 <div>
-                  <h3 className="text-xl font-bold mb-2">People Struggle to Express Ideas Clearly</h3>
-                  <p className="text-muted-foreground leading-relaxed">
+                  <h3 className="text-base md:text-xl font-bold mb-1 md:mb-2">People Struggle to Express Ideas Clearly</h3>
+                  <p className="text-sm md:text-base text-muted-foreground leading-relaxed">
                     You know what you want, but translating that vision into words AI can understand? That's where most people get stuck. Simple prompts lead to generic results.
                   </p>
                 </div>
@@ -610,14 +610,14 @@ const Index = () => {
             </div>
 
             {/* Point 2: AI responds better to structured prompts */}
-            <div className="glass rounded-xl p-6 md:p-8 border border-secondary/10 hover:border-secondary/30 transition-all duration-300 hover:-translate-y-0.5">
-              <div className="flex items-start gap-4">
-                <div className="w-12 h-12 rounded-xl bg-secondary/20 flex items-center justify-center flex-shrink-0">
-                  <Layers className="w-6 h-6 text-secondary" />
+            <div className="glass rounded-lg md:rounded-xl p-4 md:p-8 border border-secondary/10 hover:border-secondary/30 transition-all duration-300 hover:-translate-y-0.5">
+              <div className="flex items-start gap-3 md:gap-4">
+                <div className="w-10 h-10 md:w-12 md:h-12 rounded-lg md:rounded-xl bg-secondary/20 flex items-center justify-center flex-shrink-0">
+                  <Layers className="w-5 h-5 md:w-6 md:h-6 text-secondary" />
                 </div>
                 <div>
-                  <h3 className="text-xl font-bold mb-2">AI Responds Better to Structured Prompts</h3>
-                  <p className="text-muted-foreground leading-relaxed">
+                  <h3 className="text-base md:text-xl font-bold mb-1 md:mb-2">AI Responds Better to Structured Prompts</h3>
+                  <p className="text-sm md:text-base text-muted-foreground leading-relaxed">
                     When prompts include details, constraints, tone, and pacing—AI delivers exactly what you envision. Structure transforms vague requests into precise outputs.
                   </p>
                 </div>
@@ -625,14 +625,14 @@ const Index = () => {
             </div>
 
             {/* Point 3: Most users don't know how to add details */}
-            <div className="glass rounded-xl p-6 md:p-8 border border-primary/10 hover:border-primary/30 transition-all duration-300 hover:-translate-y-0.5">
-              <div className="flex items-start gap-4">
-                <div className="w-12 h-12 rounded-xl bg-primary/20 flex items-center justify-center flex-shrink-0">
-                  <Brain className="w-6 h-6 text-primary" />
+            <div className="glass rounded-lg md:rounded-xl p-4 md:p-8 border border-primary/10 hover:border-primary/30 transition-all duration-300 hover:-translate-y-0.5">
+              <div className="flex items-start gap-3 md:gap-4">
+                <div className="w-10 h-10 md:w-12 md:h-12 rounded-lg md:rounded-xl bg-primary/20 flex items-center justify-center flex-shrink-0">
+                  <Brain className="w-5 h-5 md:w-6 md:h-6 text-primary" />
                 </div>
                 <div>
-                  <h3 className="text-xl font-bold mb-2">Most Users Don't Know How to Add Details, Constraints, Tone, or Pacing</h3>
-                  <p className="text-muted-foreground leading-relaxed">
+                  <h3 className="text-base md:text-xl font-bold mb-1 md:mb-2">Most Users Don't Know How to Add Details, Constraints, Tone, or Pacing</h3>
+                  <p className="text-sm md:text-base text-muted-foreground leading-relaxed">
                     It's not intuitive. What details matter? How do you control tone? What makes pacing perfect? These are skills that take time to learn—unless you see them in action.
                   </p>
                 </div>
@@ -640,15 +640,15 @@ const Index = () => {
             </div>
 
             {/* Point 4: PromptMaster teaches by example */}
-            <div className="glass rounded-xl p-6 md:p-8 border border-secondary/10 hover:border-secondary/30 transition-all duration-300 hover:-translate-y-0.5 relative overflow-hidden">
+            <div className="glass rounded-lg md:rounded-xl p-4 md:p-8 border border-secondary/10 hover:border-secondary/30 transition-all duration-300 hover:-translate-y-0.5 relative overflow-hidden">
               <div className="absolute inset-0 bg-gradient-primary opacity-0 hover:opacity-5 transition-opacity duration-300" />
-              <div className="relative flex items-start gap-4">
-                <div className="w-12 h-12 rounded-xl bg-secondary/20 flex items-center justify-center flex-shrink-0 shadow-[0_0_20px_hsl(var(--secondary)/0.3)]">
-                  <BookOpen className="w-6 h-6 text-secondary" />
+              <div className="relative flex items-start gap-3 md:gap-4">
+                <div className="w-10 h-10 md:w-12 md:h-12 rounded-lg md:rounded-xl bg-secondary/20 flex items-center justify-center flex-shrink-0 shadow-[0_0_20px_hsl(var(--secondary)/0.3)]">
+                  <BookOpen className="w-5 h-5 md:w-6 md:h-6 text-secondary" />
                 </div>
                 <div>
-                  <h3 className="text-xl font-bold mb-2 text-secondary">PromptMaster Teaches You by Example</h3>
-                  <p className="text-muted-foreground leading-relaxed">
+                  <h3 className="text-base md:text-xl font-bold mb-1 md:mb-2 text-secondary">PromptMaster Teaches You by Example</h3>
+                  <p className="text-sm md:text-base text-muted-foreground leading-relaxed">
                     Every refined prompt shows you exactly what changed and why. You don't just get better results—you learn the art of prompt engineering through real examples. Watch your skills evolve with every transformation.
                   </p>
                 </div>
@@ -659,26 +659,26 @@ const Index = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="container mx-auto px-4 py-20 relative z-10">
-        <div className="max-w-4xl mx-auto text-center glass rounded-2xl p-12 md:p-16 border border-primary/20 animate-glow relative overflow-hidden">
+      <section className="container mx-auto px-4 py-12 md:py-20 relative z-10">
+        <div className="max-w-4xl mx-auto text-center glass rounded-xl md:rounded-2xl p-6 sm:p-8 md:p-16 border border-primary/20 animate-glow relative overflow-hidden">
           {/* Enhanced glow background */}
           <div className="absolute inset-0 bg-gradient-primary opacity-5 blur-3xl" />
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-primary/10 rounded-full blur-3xl animate-pulse-slow" />
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 md:w-96 md:h-96 bg-primary/10 rounded-full blur-3xl animate-pulse-slow" />
           
           <div className="relative z-10">
-            <h2 className="text-4xl md:text-5xl font-bold mb-6">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-4 md:mb-6 px-2">
               Ready to Master <span className="gradient-text">AI Prompting?</span>
             </h2>
-            <p className="text-muted-foreground text-lg md:text-xl mb-10 max-w-2xl mx-auto">
+            <p className="text-muted-foreground text-sm sm:text-base md:text-lg lg:text-xl mb-6 md:mb-10 max-w-2xl mx-auto px-4">
               Transform your ideas into brilliant prompts with the power of AI
             </p>
             <Link to="/refine">
               <Button 
                 size="lg" 
-                className="gap-3 text-lg md:text-xl px-12 py-8 h-auto font-semibold relative group overflow-hidden animate-glow hover:scale-[1.03] active:scale-[0.98] transition-all duration-300 shadow-[0_0_40px_hsl(var(--primary)/0.5)] hover:shadow-[0_0_60px_hsl(var(--primary)/0.7)]"
+                className="gap-2 md:gap-3 text-base md:text-lg lg:text-xl px-8 md:px-12 py-6 md:py-8 h-auto font-semibold relative group overflow-hidden animate-glow hover:scale-[1.03] active:scale-[0.98] transition-all duration-300 shadow-[0_0_40px_hsl(var(--primary)/0.5)] hover:shadow-[0_0_60px_hsl(var(--primary)/0.7)]"
               >
                 <span className="relative z-10">Start Refining for Free</span>
-                <ArrowRight className="w-6 h-6 relative z-10 group-hover:translate-x-1.5 transition-transform duration-300" />
+                <ArrowRight className="w-5 h-5 md:w-6 md:h-6 relative z-10 group-hover:translate-x-1.5 transition-transform duration-300" />
                 <span className="absolute inset-0 bg-gradient-to-r from-primary via-secondary to-primary bg-[length:200%_100%] opacity-0 group-hover:opacity-100 group-hover:animate-shimmer transition-opacity duration-300" />
               </Button>
             </Link>
