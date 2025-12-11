@@ -1,6 +1,6 @@
 import { Link, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { Sparkles, Home, LayoutDashboard, LogIn, LogOut, History } from "lucide-react";
+import { Sparkles, Home, LayoutDashboard, LogIn, LogOut, History, BookOpen } from "lucide-react";
 import { useEffect, useState } from "react";
 import { useToast } from "@/hooks/use-toast";
 import { auth } from "@/firebase";
@@ -53,6 +53,16 @@ export const Navigation = () => {
             }`}
           >
             Refine Prompt
+          </Link>
+
+          <Link
+            to="/courses"
+            className={`hidden sm:flex items-center gap-2 text-sm font-medium transition-colors ${
+              location.pathname === "/courses" || location.pathname.startsWith("/course") ? "text-primary" : "text-muted-foreground hover:text-primary"
+            }`}
+          >
+            <BookOpen className="w-4 h-4" />
+            Courses
           </Link>
 
           <Link
