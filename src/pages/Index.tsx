@@ -86,27 +86,27 @@ const Index = () => {
       <Navigation />
       
       {/* Hero Section - Enhanced */}
-      <section className="container mx-auto px-4 pt-36 pb-16 relative z-10">
-        <div className="max-w-5xl mx-auto text-center space-y-8">
+      <section className="container mx-auto px-4 pt-24 md:pt-36 pb-12 md:pb-16 relative z-10">
+        <div className="max-w-5xl mx-auto text-center space-y-6 md:space-y-8">
           {/* Badge - Enhanced with better animation */}
           <div className="inline-block animate-float">
-            <div className="inline-flex items-center gap-2.5 px-6 py-3 rounded-full glass border border-primary/40 text-sm backdrop-blur-xl shadow-[0_0_30px_hsl(var(--primary)/0.25)] hover:shadow-[0_0_40px_hsl(var(--primary)/0.35)] transition-shadow duration-300">
-              <Sparkles className="w-4 h-4 text-primary animate-pulse" />
+            <div className="inline-flex items-center gap-2 px-4 md:px-6 py-2 md:py-3 rounded-full glass border border-primary/40 text-xs md:text-sm backdrop-blur-xl shadow-[0_0_30px_hsl(var(--primary)/0.25)]">
+              <Sparkles className="w-3 h-3 md:w-4 md:h-4 text-primary animate-pulse" />
               <span className="gradient-text font-semibold tracking-wide">Transform Your Prompts with AI</span>
             </div>
           </div>
 
           {/* Main Headline - Better spacing and readability */}
-          <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold leading-[1.05] tracking-tight px-4">
+          <h1 className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl xl:text-8xl font-bold leading-[1.1] tracking-tight px-2">
             Turn Your Basic Ideas Into{" "}
             <span className="gradient-text relative inline-block">
               Brilliant AI Prompts.
-              <span className="absolute -bottom-2 left-0 right-0 h-1.5 bg-gradient-primary opacity-60 blur-sm animate-pulse-slow rounded-full" />
+              <span className="absolute -bottom-1 md:-bottom-2 left-0 right-0 h-1 md:h-1.5 bg-gradient-primary opacity-60 blur-sm animate-pulse-slow rounded-full" />
             </span>
           </h1>
 
           {/* Subheadline - Enhanced contrast and readability */}
-          <p className="text-xl md:text-2xl text-foreground/70 max-w-3xl mx-auto leading-relaxed font-light px-4">
+          <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-foreground/70 max-w-3xl mx-auto leading-relaxed font-light px-2">
             PromptMaster transforms your vague thoughts into{" "}
             <span className="text-primary font-medium drop-shadow-[0_0_8px_hsl(var(--primary)/0.4)]">
               cinematic, structured, high-impact prompts
@@ -115,46 +115,46 @@ const Index = () => {
           </p>
 
           {/* CTA Buttons - Enhanced with better hover effects */}
-          <div className="flex flex-col sm:flex-row gap-5 justify-center items-center pt-8">
-            <Link to="/refine">
+          <div className="flex flex-col sm:flex-row gap-4 md:gap-5 justify-center items-center pt-6 md:pt-8 px-4">
+            <Link to="/refine" className="w-full sm:w-auto">
               <Button 
                 size="lg" 
-                className="gap-3 text-lg px-10 py-7 h-auto font-semibold relative group overflow-hidden animate-glow hover:scale-[1.03] active:scale-[0.98] transition-all duration-300 shadow-[0_0_35px_hsl(var(--primary)/0.45)] hover:shadow-[0_0_50px_hsl(var(--primary)/0.6)]"
+                className="w-full sm:w-auto gap-2 md:gap-3 text-base md:text-lg px-6 md:px-10 py-5 md:py-7 h-auto font-semibold relative group overflow-hidden animate-glow hover:scale-[1.03] active:scale-[0.98] transition-all duration-300 shadow-[0_0_35px_hsl(var(--primary)/0.45)] hover:shadow-[0_0_50px_hsl(var(--primary)/0.6)]"
               >
                 <span className="relative z-10">Refine Your Prompt</span>
-                <ArrowRight className="w-5 h-5 relative z-10 group-hover:translate-x-1.5 transition-transform duration-300" />
+                <ArrowRight className="w-4 h-4 md:w-5 md:h-5 relative z-10 group-hover:translate-x-1.5 transition-transform duration-300" />
                 <span className="absolute inset-0 bg-gradient-to-r from-primary via-secondary to-primary bg-[length:200%_100%] opacity-0 group-hover:opacity-100 group-hover:animate-shimmer transition-opacity duration-300" />
               </Button>
             </Link>
             <Button 
               size="lg" 
               variant="outline" 
-              className="gap-3 text-lg px-10 py-7 h-auto font-semibold border-2 border-primary/40 hover:border-primary/70 hover:bg-primary/10 hover:shadow-[0_0_25px_hsl(var(--primary)/0.25)] active:scale-[0.98] transition-all duration-300 backdrop-blur-sm"
+              className="w-full sm:w-auto gap-2 md:gap-3 text-base md:text-lg px-6 md:px-10 py-5 md:py-7 h-auto font-semibold border-2 border-primary/40 hover:border-primary/70 hover:bg-primary/10 hover:shadow-[0_0_25px_hsl(var(--primary)/0.25)] active:scale-[0.98] transition-all duration-300 backdrop-blur-sm"
               onClick={scrollToFeatures}
             >
               See How It Works
-              <PlayCircle className="w-5 h-5 group-hover:scale-110 transition-transform" />
+              <PlayCircle className="w-4 h-4 md:w-5 md:h-5 group-hover:scale-110 transition-transform" />
             </Button>
           </div>
         </div>
       </section>
 
-      {/* Social Proof Stats Section - NEW */}
-      <section className="container mx-auto px-4 py-12 relative z-10">
+      {/* Social Proof Stats Section */}
+      <section className="container mx-auto px-4 py-8 md:py-12 relative z-10">
         <div 
           ref={promptsRefined.ref}
           className="max-w-4xl mx-auto"
         >
-          <div className="grid grid-cols-3 gap-4 md:gap-8">
+          <div className="grid grid-cols-3 gap-2 sm:gap-4 md:gap-8">
             {/* Stat 1: Prompts Refined */}
-            <div className="text-center glass rounded-xl p-6 md:p-8 border border-primary/20 hover:border-primary/40 transition-all duration-300 group">
-              <div className="flex items-center justify-center gap-2 mb-2">
-                <Copy className="w-5 h-5 text-primary opacity-70" />
+            <div className="text-center glass rounded-lg md:rounded-xl p-3 sm:p-4 md:p-8 border border-primary/20 hover:border-primary/40 transition-all duration-300 group">
+              <div className="flex items-center justify-center gap-2 mb-1 md:mb-2">
+                <Copy className="w-4 h-4 md:w-5 md:h-5 text-primary opacity-70" />
               </div>
-              <div className="text-3xl md:text-4xl lg:text-5xl font-bold gradient-text mb-1">
+              <div className="text-xl sm:text-2xl md:text-4xl lg:text-5xl font-bold gradient-text mb-0.5 md:mb-1">
                 {promptsRefined.count.toLocaleString()}+
               </div>
-              <div className="text-sm md:text-base text-muted-foreground font-medium">
+              <div className="text-xs sm:text-sm md:text-base text-muted-foreground font-medium">
                 Prompts Refined
               </div>
             </div>
@@ -162,15 +162,15 @@ const Index = () => {
             {/* Stat 2: Active Users */}
             <div 
               ref={activeUsers.ref}
-              className="text-center glass rounded-xl p-6 md:p-8 border border-secondary/20 hover:border-secondary/40 transition-all duration-300 group"
+              className="text-center glass rounded-lg md:rounded-xl p-3 sm:p-4 md:p-8 border border-secondary/20 hover:border-secondary/40 transition-all duration-300 group"
             >
-              <div className="flex items-center justify-center gap-2 mb-2">
-                <Users className="w-5 h-5 text-secondary opacity-70" />
+              <div className="flex items-center justify-center gap-2 mb-1 md:mb-2">
+                <Users className="w-4 h-4 md:w-5 md:h-5 text-secondary opacity-70" />
               </div>
-              <div className="text-3xl md:text-4xl lg:text-5xl font-bold gradient-text mb-1">
+              <div className="text-xl sm:text-2xl md:text-4xl lg:text-5xl font-bold gradient-text mb-0.5 md:mb-1">
                 {activeUsers.count.toLocaleString()}+
               </div>
-              <div className="text-sm md:text-base text-muted-foreground font-medium">
+              <div className="text-xs sm:text-sm md:text-base text-muted-foreground font-medium">
                 Active Users
               </div>
             </div>
@@ -178,16 +178,16 @@ const Index = () => {
             {/* Stat 3: Prompt Templates */}
             <div 
               ref={promptTemplates.ref}
-              className="text-center glass rounded-xl p-6 md:p-8 border border-primary/20 hover:border-primary/40 transition-all duration-300 group"
+              className="text-center glass rounded-lg md:rounded-xl p-3 sm:p-4 md:p-8 border border-primary/20 hover:border-primary/40 transition-all duration-300 group"
             >
-              <div className="flex items-center justify-center gap-2 mb-2">
-                <LayoutTemplate className="w-5 h-5 text-primary opacity-70" />
+              <div className="flex items-center justify-center gap-2 mb-1 md:mb-2">
+                <LayoutTemplate className="w-4 h-4 md:w-5 md:h-5 text-primary opacity-70" />
               </div>
-              <div className="text-3xl md:text-4xl lg:text-5xl font-bold gradient-text mb-1">
+              <div className="text-xl sm:text-2xl md:text-4xl lg:text-5xl font-bold gradient-text mb-0.5 md:mb-1">
                 {promptTemplates.count}+
               </div>
-              <div className="text-sm md:text-base text-muted-foreground font-medium">
-                Prompt Templates
+              <div className="text-xs sm:text-sm md:text-base text-muted-foreground font-medium">
+                Templates
               </div>
             </div>
           </div>
@@ -195,53 +195,53 @@ const Index = () => {
       </section>
 
       {/* Before → After Example Section */}
-      <section className="container mx-auto px-4 py-16 relative z-10">
+      <section className="container mx-auto px-4 py-10 md:py-16 relative z-10">
         <div className="max-w-6xl mx-auto">
-          <div className="glass rounded-2xl p-8 md:p-12 border border-primary/20 shadow-[0_0_40px_hsl(var(--primary)/0.1)] relative overflow-hidden hover:shadow-[0_0_60px_hsl(var(--primary)/0.15)] transition-shadow duration-500">
+          <div className="glass rounded-xl md:rounded-2xl p-4 sm:p-6 md:p-12 border border-primary/20 shadow-[0_0_40px_hsl(var(--primary)/0.1)] relative overflow-hidden">
             {/* Subtle background glow */}
-            <div className="absolute top-0 right-0 w-64 h-64 bg-primary/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2" />
+            <div className="absolute top-0 right-0 w-64 h-64 bg-primary/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 hidden md:block" />
             
             <div className="relative z-10">
-              <div className="grid md:grid-cols-2 gap-6 md:gap-8 mb-8">
+              <div className="grid md:grid-cols-2 gap-4 md:gap-8 mb-6 md:mb-8">
                 {/* Left Box - Basic Prompt */}
-                <div className="space-y-4">
-                  <div className="flex items-center gap-3 mb-2">
+                <div className="space-y-3 md:space-y-4">
+                  <div className="flex items-center gap-2 md:gap-3 mb-1 md:mb-2">
                     <div className="h-px flex-1 bg-border/50" />
-                    <span className="text-xs font-semibold text-muted-foreground uppercase tracking-wider">Basic Prompt</span>
+                    <span className="text-[10px] md:text-xs font-semibold text-muted-foreground uppercase tracking-wider">Basic Prompt</span>
                     <div className="h-px flex-1 bg-border/50" />
                   </div>
-                  <div className="bg-muted/40 rounded-xl p-6 border border-border/50 min-h-[120px] flex items-center hover:border-border transition-colors duration-300">
-                    <p className="text-lg text-muted-foreground italic font-light">Make a horror story</p>
+                  <div className="bg-muted/40 rounded-lg md:rounded-xl p-4 md:p-6 border border-border/50 min-h-[80px] md:min-h-[120px] flex items-center">
+                    <p className="text-sm md:text-lg text-muted-foreground italic font-light">Make a horror story</p>
                   </div>
                 </div>
 
                 {/* Right Box - Refined Prompt */}
                 <div className="space-y-4">
-                  <div className="flex items-center gap-3 mb-2">
+                  <div className="flex items-center gap-2 md:gap-3 mb-1 md:mb-2">
                     <div className="h-px flex-1 bg-primary/30" />
-                    <span className="text-xs font-semibold text-primary uppercase tracking-wider">Refined Prompt</span>
+                    <span className="text-[10px] md:text-xs font-semibold text-primary uppercase tracking-wider">Refined Prompt</span>
                     <div className="h-px flex-1 bg-primary/30" />
                   </div>
-                  <div className="bg-primary/10 rounded-xl p-6 border border-primary/30 min-h-[120px] flex items-center relative overflow-hidden backdrop-blur-sm hover:border-primary/50 transition-colors duration-300" style={{
+                  <div className="bg-primary/10 rounded-lg md:rounded-xl p-4 md:p-6 border border-primary/30 min-h-[100px] md:min-h-[120px] flex items-center relative overflow-hidden backdrop-blur-sm" style={{
                     background: 'linear-gradient(135deg, hsl(var(--primary) / 0.1), hsl(var(--secondary) / 0.05))'
                   }}>
-                    <p className="text-base text-foreground leading-relaxed">
-                      Create a spine-chilling horror story set in an abandoned Victorian mansion where a young journalist discovers a century-old diary — each entry materializes in blood as she reads, revealing a dark family secret. Build atmospheric tension through shadow play, creaking floorboards, and whispers from empty rooms as the mansion claims its next vessel.
+                    <p className="text-xs sm:text-sm md:text-base text-foreground leading-relaxed">
+                      Create a spine-chilling horror story set in an abandoned Victorian mansion where a young journalist discovers a century-old diary — each entry materializes in blood as she reads, revealing a dark family secret. Build atmospheric tension through shadow play, creaking floorboards, and whispers from empty rooms.
                     </p>
                   </div>
                 </div>
               </div>
 
-              {/* Try This Example Button - Enhanced */}
+              {/* Try This Example Button */}
               <div className="flex justify-center">
-                <Link to={`/refine?example=${encodeURIComponent("Make a horror story")}`}>
+                <Link to={`/refine?example=${encodeURIComponent("Make a horror story")}`} className="w-full sm:w-auto">
                   <Button 
                     size="lg" 
-                    className="gap-2.5 text-base px-8 py-6 h-auto font-semibold relative group overflow-hidden hover:scale-[1.03] active:scale-[0.98] transition-all duration-300 shadow-[0_0_25px_hsl(var(--primary)/0.3)] hover:shadow-[0_0_40px_hsl(var(--primary)/0.5)]"
+                    className="w-full sm:w-auto gap-2 text-sm md:text-base px-6 md:px-8 py-4 md:py-6 h-auto font-semibold relative group overflow-hidden hover:scale-[1.03] active:scale-[0.98] transition-all duration-300 shadow-[0_0_25px_hsl(var(--primary)/0.3)]"
                   >
-                    <Sparkles className="w-5 h-5 group-hover:rotate-12 transition-transform duration-300" />
+                    <Sparkles className="w-4 h-4 md:w-5 md:h-5" />
                     Try This Example
-                    <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
+                    <ArrowRight className="w-4 h-4 md:w-5 md:h-5 group-hover:translate-x-1 transition-transform duration-300" />
                   </Button>
                 </Link>
               </div>
@@ -251,77 +251,77 @@ const Index = () => {
       </section>
 
       {/* Features Section */}
-      <section id="features" className="container mx-auto px-4 py-20 relative z-10 scroll-mt-24">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold mb-4">
+      <section id="features" className="container mx-auto px-4 py-12 md:py-20 relative z-10 scroll-mt-24">
+        <div className="text-center mb-10 md:mb-16">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-3 md:mb-4 px-2">
             Everything You Need to <span className="gradient-text">Master Prompts</span>
           </h2>
-          <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
+          <p className="text-muted-foreground text-sm md:text-lg max-w-2xl mx-auto px-4">
             Powerful features designed to transform your ideas into high-impact AI prompts
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-7xl mx-auto">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 md:gap-6 max-w-7xl mx-auto">
           {/* Feature 1: AI-Enhanced Prompt Engine */}
-          <div className="glass rounded-xl p-6 md:p-8 border border-primary/10 hover:border-primary/40 transition-all duration-300 hover:shadow-[0_0_30px_hsl(var(--primary)/0.3)] hover:-translate-y-1 group relative overflow-hidden">
+          <div className="glass rounded-lg md:rounded-xl p-4 md:p-8 border border-primary/10 hover:border-primary/40 transition-all duration-300 group relative overflow-hidden">
             <div className="absolute inset-0 bg-gradient-primary opacity-0 group-hover:opacity-5 transition-opacity duration-300" />
             <div className="relative z-10">
-              <div className="w-14 h-14 rounded-xl bg-primary/20 flex items-center justify-center mb-5 group-hover:scale-110 transition-transform duration-300 shadow-[0_0_20px_hsl(var(--primary)/0.3)]">
-                <Brain className="w-7 h-7 text-primary" />
+              <div className="w-10 h-10 md:w-14 md:h-14 rounded-lg md:rounded-xl bg-primary/20 flex items-center justify-center mb-3 md:mb-5 group-hover:scale-110 transition-transform duration-300 shadow-[0_0_20px_hsl(var(--primary)/0.3)]">
+                <Brain className="w-5 h-5 md:w-7 md:h-7 text-primary" />
               </div>
-              <h3 className="text-xl font-bold mb-3 group-hover:text-primary transition-colors duration-300">
-                AI-Enhanced Prompt Engine
+              <h3 className="text-sm md:text-xl font-bold mb-2 md:mb-3 group-hover:text-primary transition-colors duration-300">
+                AI-Enhanced Engine
               </h3>
-              <p className="text-muted-foreground leading-relaxed">
-                Advanced AI algorithms analyze and transform your basic ideas into structured, impactful prompts with precision and creativity.
+              <p className="text-xs md:text-base text-muted-foreground leading-relaxed hidden sm:block">
+                Advanced AI algorithms transform your basic ideas into structured, impactful prompts.
               </p>
             </div>
           </div>
 
           {/* Feature 2: Explains What You Were Missing */}
-          <div className="glass rounded-xl p-6 md:p-8 border border-secondary/10 hover:border-secondary/40 transition-all duration-300 hover:shadow-[0_0_30px_hsl(var(--secondary)/0.3)] hover:-translate-y-1 group relative overflow-hidden">
+          <div className="glass rounded-lg md:rounded-xl p-4 md:p-8 border border-secondary/10 hover:border-secondary/40 transition-all duration-300 group relative overflow-hidden">
             <div className="absolute inset-0 bg-gradient-primary opacity-0 group-hover:opacity-5 transition-opacity duration-300" />
             <div className="relative z-10">
-              <div className="w-14 h-14 rounded-xl bg-secondary/20 flex items-center justify-center mb-5 group-hover:scale-110 transition-transform duration-300 shadow-[0_0_20px_hsl(var(--secondary)/0.3)]">
-                <Lightbulb className="w-7 h-7 text-secondary" />
+              <div className="w-10 h-10 md:w-14 md:h-14 rounded-lg md:rounded-xl bg-secondary/20 flex items-center justify-center mb-3 md:mb-5 group-hover:scale-110 transition-transform duration-300 shadow-[0_0_20px_hsl(var(--secondary)/0.3)]">
+                <Lightbulb className="w-5 h-5 md:w-7 md:h-7 text-secondary" />
               </div>
-              <h3 className="text-xl font-bold mb-3 group-hover:text-secondary transition-colors duration-300">
-                Explains What You Were Missing
+              <h3 className="text-sm md:text-xl font-bold mb-2 md:mb-3 group-hover:text-secondary transition-colors duration-300">
+                Learn As You Go
               </h3>
-              <p className="text-muted-foreground leading-relaxed">
-                Learn as you go. Our AI breaks down exactly what enhancements were made and why, helping you improve your prompt-writing skills.
+              <p className="text-xs md:text-base text-muted-foreground leading-relaxed hidden sm:block">
+                Our AI breaks down exactly what enhancements were made and why.
               </p>
             </div>
           </div>
 
           {/* Feature 3: Premium Cinematic Styles */}
-          <div className="glass rounded-xl p-6 md:p-8 border border-primary/10 hover:border-primary/40 transition-all duration-300 hover:shadow-[0_0_30px_hsl(var(--primary)/0.3)] hover:-translate-y-1 group relative overflow-hidden">
+          <div className="glass rounded-lg md:rounded-xl p-4 md:p-8 border border-primary/10 hover:border-primary/40 transition-all duration-300 group relative overflow-hidden">
             <div className="absolute inset-0 bg-gradient-primary opacity-0 group-hover:opacity-5 transition-opacity duration-300" />
             <div className="relative z-10">
-              <div className="w-14 h-14 rounded-xl bg-primary/20 flex items-center justify-center mb-5 group-hover:scale-110 transition-transform duration-300 shadow-[0_0_20px_hsl(var(--primary)/0.3)]">
-                <Film className="w-7 h-7 text-primary" />
+              <div className="w-10 h-10 md:w-14 md:h-14 rounded-lg md:rounded-xl bg-primary/20 flex items-center justify-center mb-3 md:mb-5 group-hover:scale-110 transition-transform duration-300 shadow-[0_0_20px_hsl(var(--primary)/0.3)]">
+                <Film className="w-5 h-5 md:w-7 md:h-7 text-primary" />
               </div>
-              <h3 className="text-xl font-bold mb-3 group-hover:text-primary transition-colors duration-300">
-                Premium Cinematic Styles
+              <h3 className="text-sm md:text-xl font-bold mb-2 md:mb-3 group-hover:text-primary transition-colors duration-300">
+                Cinematic Styles
               </h3>
-              <p className="text-muted-foreground leading-relaxed">
-                Choose from cinematic, professional, marketing, storytelling, and more premium styles tailored to your specific needs.
+              <p className="text-xs md:text-base text-muted-foreground leading-relaxed hidden sm:block">
+                Choose from cinematic, professional, marketing, and more premium styles.
               </p>
             </div>
           </div>
 
           {/* Feature 4: Fast, Clean, and Beginner-Friendly */}
-          <div className="glass rounded-xl p-6 md:p-8 border border-secondary/10 hover:border-secondary/40 transition-all duration-300 hover:shadow-[0_0_30px_hsl(var(--secondary)/0.3)] hover:-translate-y-1 group relative overflow-hidden">
+          <div className="glass rounded-lg md:rounded-xl p-4 md:p-8 border border-secondary/10 hover:border-secondary/40 transition-all duration-300 group relative overflow-hidden">
             <div className="absolute inset-0 bg-gradient-primary opacity-0 group-hover:opacity-5 transition-opacity duration-300" />
             <div className="relative z-10">
-              <div className="w-14 h-14 rounded-xl bg-secondary/20 flex items-center justify-center mb-5 group-hover:scale-110 transition-transform duration-300 shadow-[0_0_20px_hsl(var(--secondary)/0.3)]">
-                <Gauge className="w-7 h-7 text-secondary" />
+              <div className="w-10 h-10 md:w-14 md:h-14 rounded-lg md:rounded-xl bg-secondary/20 flex items-center justify-center mb-3 md:mb-5 group-hover:scale-110 transition-transform duration-300 shadow-[0_0_20px_hsl(var(--secondary)/0.3)]">
+                <Gauge className="w-5 h-5 md:w-7 md:h-7 text-secondary" />
               </div>
-              <h3 className="text-xl font-bold mb-3 group-hover:text-secondary transition-colors duration-300">
-                Fast, Clean, and Beginner-Friendly
+              <h3 className="text-sm md:text-xl font-bold mb-2 md:mb-3 group-hover:text-secondary transition-colors duration-300">
+                Fast & Easy
               </h3>
-              <p className="text-muted-foreground leading-relaxed">
-                Get professional results in seconds with our intuitive interface. No learning curve—just powerful results instantly.
+              <p className="text-xs md:text-base text-muted-foreground leading-relaxed hidden sm:block">
+                Get professional results in seconds with our intuitive interface.
               </p>
             </div>
           </div>
@@ -329,32 +329,32 @@ const Index = () => {
       </section>
 
       {/* How It Works Section */}
-      <section className="container mx-auto px-4 py-20 relative z-10">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold mb-4">
+      <section className="container mx-auto px-4 py-12 md:py-20 relative z-10">
+        <div className="text-center mb-10 md:mb-16">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-3 md:mb-4 px-2">
             How <span className="gradient-text">PromptMaster</span> Works
           </h2>
-          <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
+          <p className="text-muted-foreground text-sm md:text-lg max-w-2xl mx-auto px-4">
             Transform your ideas into professional prompts in three simple steps
           </p>
         </div>
 
         <div className="max-w-5xl mx-auto">
-          <div className="grid md:grid-cols-3 gap-8 md:gap-12 relative">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-12 relative">
             {/* Connecting Line - Hidden on mobile, shown on desktop */}
             <div className="hidden md:block absolute top-10 left-[calc(33.333%+2rem)] right-[calc(33.333%+2rem)] h-0.5 bg-gradient-primary opacity-30" />
             <ArrowRight className="hidden md:block absolute top-9 left-1/2 -translate-x-1/2 w-6 h-6 text-primary/50" />
 
             {/* Step 1: Enter your prompt */}
             <div className="relative z-10 group">
-              <div className="text-center space-y-6">
+              <div className="text-center space-y-4 md:space-y-6">
                 {/* Step Number & Icon */}
                 <div className="relative inline-flex items-center justify-center">
                   <div className="absolute inset-0 bg-primary/20 rounded-full blur-xl animate-pulse-slow" />
-                  <div className="relative w-20 h-20 rounded-2xl bg-primary/20 border-2 border-primary/40 flex items-center justify-center shadow-[0_0_30px_hsl(var(--primary)/0.4)] group-hover:scale-110 transition-transform duration-300">
-                    <PenTool className="w-10 h-10 text-primary" />
+                  <div className="relative w-16 h-16 md:w-20 md:h-20 rounded-xl md:rounded-2xl bg-primary/20 border-2 border-primary/40 flex items-center justify-center shadow-[0_0_30px_hsl(var(--primary)/0.4)] group-hover:scale-110 transition-transform duration-300">
+                    <PenTool className="w-8 h-8 md:w-10 md:h-10 text-primary" />
                   </div>
-                  <div className="absolute -top-2 -right-2 w-8 h-8 rounded-full bg-primary text-primary-foreground flex items-center justify-center text-sm font-bold shadow-lg">
+                  <div className="absolute -top-2 -right-2 w-7 h-7 md:w-8 md:h-8 rounded-full bg-primary text-primary-foreground flex items-center justify-center text-xs md:text-sm font-bold shadow-lg">
                     1
                   </div>
                 </div>

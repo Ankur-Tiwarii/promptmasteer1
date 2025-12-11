@@ -1,6 +1,6 @@
 import { Link, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { Home, LayoutDashboard, LogIn, LogOut, History, BookOpen, Layers, Users, Upload, Sparkles } from "lucide-react";
+import { Home, LayoutDashboard, LogIn, LogOut, History, BookOpen, Layers, Users, Upload, Sparkles, Menu, X } from "lucide-react";
 import { useEffect, useState } from "react";
 import { useToast } from "@/hooks/use-toast";
 import { auth } from "@/firebase";
@@ -9,183 +9,158 @@ import { onAuthStateChanged, signOut, User } from "firebase/auth";
 export const Navigation = () => {
   const location = useLocation();
   const [user, setUser] = useState<User | null>(null);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const { toast } = useToast();
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (firebaseUser) => {
       setUser(firebaseUser);
     });
-
     return () => unsubscribe();
   }, []);
 
+  // Close mobile menu on route change
+  useEffect(() => {
+    setMobileMenuOpen(false);
+  }, [location.pathname]);
+
   const handleSignOut = async () => {
     await signOut(auth);
+    setMobileMenuOpen(false);
     toast({
       title: "Signed out successfully",
       description: "You have been signed out of your account",
     });
   };
 
+  const NavLink = ({ to, icon: Icon, label, showOnMobile = true }: { to: string; icon: React.ElementType; label: string; showOnMobile?: boolean }) => {
+    const isActive = location.pathname === to || (to !== "/" && location.pathname.startsWith(to));
+    return (
+      <Link
+        to={to}
+        onClick={() => setMobileMenuOpen(false)}
+        className={`flex items-center gap-2 text-sm font-medium transition-all duration-200 relative py-2 px-3 rounded-lg ${
+          isActive 
+            ? "text-primary bg-primary/10" 
+            : "text-muted-foreground hover:text-primary hover:bg-primary/5"
+        } ${!showOnMobile ? 'hidden md:flex' : ''}`}
+      >
+        <Icon className="w-4 h-4" />
+        {label}
+      </Link>
+    );
+  };
+
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 border-b border-border/50 glass">
-      <div className="container mx-auto px-4 h-20 flex items-center justify-between">
-        <Link to="/" className="flex items-center gap-2.5 text-xl font-bold gradient-text hover:opacity-90 transition-opacity">
-          <img src="/logo.svg" alt="PromptMaster" className="w-9 h-9" />
-          PromptMaster
+      <div className="container mx-auto px-4 h-16 md:h-20 flex items-center justify-between">
+        {/* Logo */}
+        <Link to="/" className="flex items-center gap-2 text-lg md:text-xl font-bold gradient-text hover:opacity-90 transition-opacity">
+          <img src="/logo.svg" alt="PromptMaster" className="w-8 h-8 md:w-9 md:h-9" />
+          <span className="hidden xs:inline">PromptMaster</span>
         </Link>
 
-        <div className="flex items-center gap-4 md:gap-6">
-          <Link
-            to="/"
-            className={`hidden sm:flex items-center gap-2 text-sm font-medium transition-all duration-200 relative py-1 ${
-              location.pathname === "/" 
-                ? "text-primary" 
-                : "text-muted-foreground hover:text-primary"
-            }`}
-          >
-            <Home className="w-4 h-4" />
-            Home
-            {location.pathname === "/" && (
-              <span className="absolute -bottom-1 left-0 right-0 h-0.5 bg-primary rounded-full" />
-            )}
-          </Link>
+        {/* Desktop Navigation */}
+        <div className="hidden md:flex items-center gap-1 lg:gap-2">
+          <NavLink to="/" icon={Home} label="Home" />
+          <NavLink to="/refine" icon={Sparkles} label="Refine" />
+          <NavLink to="/presets" icon={Layers} label="Master Prompts" />
+          <NavLink to="/courses" icon={BookOpen} label="Courses" />
+          <NavLink to="/community" icon={Users} label="Community" />
+          {user && <NavLink to="/upload" icon={Upload} label="Upload" />}
+          <NavLink to="/history" icon={History} label="History" />
+          {user && <NavLink to="/dashboard" icon={LayoutDashboard} label="Dashboard" />}
+        </div>
 
-          <Link
-            to="/refine"
-            className={`text-sm font-medium transition-all duration-200 relative py-1 ${
-              location.pathname === "/refine" 
-                ? "text-primary" 
-                : "text-muted-foreground hover:text-primary"
-            }`}
-          >
-            Refine Prompt
-            {location.pathname === "/refine" && (
-              <span className="absolute -bottom-1 left-0 right-0 h-0.5 bg-primary rounded-full" />
-            )}
-          </Link>
-
-          <Link
-            to="/presets"
-            className={`hidden sm:flex items-center gap-2 text-sm font-medium transition-all duration-200 relative py-1 ${
-              location.pathname === "/presets" 
-                ? "text-primary" 
-                : "text-muted-foreground hover:text-primary"
-            }`}
-          >
-            <Layers className="w-4 h-4" />
-            Master Prompts
-            {location.pathname === "/presets" && (
-              <span className="absolute -bottom-1 left-0 right-0 h-0.5 bg-primary rounded-full" />
-            )}
-          </Link>
-
-          <Link
-            to="/courses"
-            className={`hidden sm:flex items-center gap-2 text-sm font-medium transition-all duration-200 relative py-1 ${
-              location.pathname === "/courses" || location.pathname.startsWith("/course") 
-                ? "text-primary" 
-                : "text-muted-foreground hover:text-primary"
-            }`}
-          >
-            <BookOpen className="w-4 h-4" />
-            Courses
-            {(location.pathname === "/courses" || location.pathname.startsWith("/course")) && (
-              <span className="absolute -bottom-1 left-0 right-0 h-0.5 bg-primary rounded-full" />
-            )}
-          </Link>
-
-          <Link
-            to="/community"
-            className={`hidden sm:flex items-center gap-2 text-sm font-medium transition-all duration-200 relative py-1 ${
-              location.pathname === "/community" || location.pathname.startsWith("/creator") 
-                ? "text-primary" 
-                : "text-muted-foreground hover:text-primary"
-            }`}
-          >
-            <Users className="w-4 h-4" />
-            Community
-            {(location.pathname === "/community" || location.pathname.startsWith("/creator")) && (
-              <span className="absolute -bottom-1 left-0 right-0 h-0.5 bg-primary rounded-full" />
-            )}
-          </Link>
-
-          {user && (
-            <Link
-              to="/upload"
-              className={`hidden sm:flex items-center gap-2 text-sm font-medium transition-all duration-200 relative py-1 ${
-                location.pathname === "/upload" 
-                  ? "text-primary" 
-                  : "text-muted-foreground hover:text-primary"
-              }`}
-            >
-              <Upload className="w-4 h-4" />
-              Upload
-              {location.pathname === "/upload" && (
-                <span className="absolute -bottom-1 left-0 right-0 h-0.5 bg-primary rounded-full" />
-              )}
-            </Link>
-          )}
-
-          <Link
-            to="/history"
-            className={`hidden sm:flex items-center gap-2 text-sm font-medium transition-all duration-200 relative py-1 ${
-              location.pathname === "/history" 
-                ? "text-primary" 
-                : "text-muted-foreground hover:text-primary"
-            }`}
-          >
-            <History className="w-4 h-4" />
-            History
-            {location.pathname === "/history" && (
-              <span className="absolute -bottom-1 left-0 right-0 h-0.5 bg-primary rounded-full" />
-            )}
-          </Link>
-
-          {user && (
-            <Link
-              to="/dashboard"
-              className={`hidden sm:flex items-center gap-2 text-sm font-medium transition-all duration-200 relative py-1 ${
-                location.pathname === "/dashboard" 
-                  ? "text-primary" 
-                  : "text-muted-foreground hover:text-primary"
-              }`}
-            >
-              <LayoutDashboard className="w-4 h-4" />
-              Dashboard
-              {location.pathname === "/dashboard" && (
-                <span className="absolute -bottom-1 left-0 right-0 h-0.5 bg-primary rounded-full" />
-              )}
-            </Link>
-          )}
-
+        {/* Desktop Auth Buttons */}
+        <div className="hidden md:flex items-center gap-2">
           {user ? (
             <Button variant="outline" size="sm" onClick={handleSignOut} className="gap-2">
               <LogOut className="w-4 h-4" />
-              <span className="hidden sm:inline">Sign Out</span>
+              Sign Out
             </Button>
           ) : (
-            <div className="flex items-center gap-2 md:gap-3">
+            <>
               <Link to="/auth">
-                <Button 
-                  variant="outline" 
-                  size="sm" 
-                  className="gap-2 hover:shadow-[0_0_20px_hsl(var(--primary)/0.4)] transition-shadow"
-                >
+                <Button variant="outline" size="sm" className="gap-2">
                   <LogIn className="w-4 h-4" />
-                  <span className="hidden sm:inline">Sign In</span>
+                  Sign In
                 </Button>
               </Link>
               <Link to="/auth">
-                <Button size="sm" className="animate-glow gap-2">
+                <Button size="sm" className="gap-2">
                   <Sparkles className="w-4 h-4" />
-                  <span className="hidden sm:inline">Start Free</span>
+                  Start Free
                 </Button>
               </Link>
-            </div>
+            </>
           )}
         </div>
+
+        {/* Mobile Menu Button */}
+        <button
+          onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+          className="md:hidden p-2 rounded-lg hover:bg-primary/10 transition-colors"
+          aria-label="Toggle menu"
+        >
+          {mobileMenuOpen ? (
+            <X className="w-6 h-6 text-primary" />
+          ) : (
+            <Menu className="w-6 h-6 text-primary" />
+          )}
+        </button>
       </div>
+
+      {/* Mobile Menu Overlay */}
+      {mobileMenuOpen && (
+        <div className="md:hidden fixed inset-0 top-16 z-40 bg-background/95 backdrop-blur-lg border-t border-border/50">
+          <div className="container mx-auto px-4 py-6 flex flex-col gap-2 max-h-[calc(100vh-4rem)] overflow-y-auto">
+            {/* Navigation Links */}
+            <div className="space-y-1">
+              <NavLink to="/" icon={Home} label="Home" />
+              <NavLink to="/refine" icon={Sparkles} label="Refine Prompt" />
+              <NavLink to="/presets" icon={Layers} label="Master Prompts" />
+              <NavLink to="/courses" icon={BookOpen} label="Courses" />
+              <NavLink to="/community" icon={Users} label="Community" />
+              {user && <NavLink to="/upload" icon={Upload} label="Upload" />}
+              <NavLink to="/history" icon={History} label="History" />
+              {user && <NavLink to="/dashboard" icon={LayoutDashboard} label="Dashboard" />}
+            </div>
+
+            {/* Divider */}
+            <div className="h-px bg-border/50 my-4" />
+
+            {/* Auth Section */}
+            <div className="space-y-3">
+              {user ? (
+                <Button 
+                  variant="outline" 
+                  onClick={handleSignOut} 
+                  className="w-full gap-2 justify-center"
+                >
+                  <LogOut className="w-4 h-4" />
+                  Sign Out
+                </Button>
+              ) : (
+                <>
+                  <Link to="/auth" onClick={() => setMobileMenuOpen(false)} className="block">
+                    <Button variant="outline" className="w-full gap-2 justify-center">
+                      <LogIn className="w-4 h-4" />
+                      Sign In
+                    </Button>
+                  </Link>
+                  <Link to="/auth" onClick={() => setMobileMenuOpen(false)} className="block">
+                    <Button className="w-full gap-2 justify-center">
+                      <Sparkles className="w-4 h-4" />
+                      Start Free
+                    </Button>
+                  </Link>
+                </>
+              )}
+            </div>
+          </div>
+        </div>
+      )}
     </nav>
   );
 };
