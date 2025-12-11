@@ -62,7 +62,7 @@ const Presets = () => {
           {/* Header */}
           <div className="text-center space-y-4">
             <h1 className="text-4xl md:text-5xl font-bold">
-              Preset <span className="gradient-text">Prompt Library</span>
+              Master <span className="gradient-text">Prompts Library</span>
             </h1>
             <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
               Browse our curated collection of professionally crafted, ready-to-use prompts. Copy and paste directly into your AI tool.
