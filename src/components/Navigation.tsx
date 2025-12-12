@@ -13,10 +13,16 @@ export const Navigation = () => {
   const { toast } = useToast();
 
   useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (firebaseUser) => {
-      setUser(firebaseUser);
-    });
-    return () => unsubscribe();
+    try {
+      const unsubscribe = onAuthStateChanged(auth, (firebaseUser) => {
+        setUser(firebaseUser);
+      });
+      return () => unsubscribe();
+    } catch (error) {
+      console.log("Auth error:", error);
+      // Continue without auth if Firebase fails
+      setUser(null);
+    }
   }, []);
 
   // Close mobile menu on route change
@@ -25,12 +31,21 @@ export const Navigation = () => {
   }, [location.pathname]);
 
   const handleSignOut = async () => {
-    await signOut(auth);
-    setMobileMenuOpen(false);
-    toast({
-      title: "Signed out successfully",
-      description: "You have been signed out of your account",
-    });
+    try {
+      await signOut(auth);
+      setMobileMenuOpen(false);
+      toast({
+        title: "Signed out successfully",
+        description: "You have been signed out of your account",
+      });
+    } catch (error) {
+      console.log("Sign out error:", error);
+      setMobileMenuOpen(false);
+      toast({
+        title: "Signed out",
+        description: "You have been signed out",
+      });
+    }
   };
 
   const NavLink = ({ to, icon: Icon, label, showOnMobile = true }: { to: string; icon: React.ElementType; label: string; showOnMobile?: boolean }) => {

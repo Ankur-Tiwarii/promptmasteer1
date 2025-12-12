@@ -6,49 +6,9 @@ import { ArrowRight, Sparkles, Zap, Brain, Lightbulb, Film, Gauge, PlayCircle, P
 import { Link } from "react-router-dom";
 import { useEffect, useState, useRef } from "react";
 
-// Animated counter hook
-const useCountUp = (end: number, duration: number = 2000, startOnView: boolean = true) => {
-  const [count, setCount] = useState(0);
-  const [hasStarted, setHasStarted] = useState(false);
-  const ref = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    if (!startOnView) {
-      setHasStarted(true);
-    }
-  }, [startOnView]);
-
-  useEffect(() => {
-    if (startOnView && ref.current) {
-      const observer = new IntersectionObserver(
-        ([entry]) => {
-          if (entry.isIntersecting && !hasStarted) {
-            setHasStarted(true);
-          }
-        },
-        { threshold: 0.3 }
-      );
-      observer.observe(ref.current);
-      return () => observer.disconnect();
-    }
-  }, [hasStarted, startOnView]);
-
-  useEffect(() => {
-    if (!hasStarted) return;
-    
-    let startTime: number;
-    const animate = (currentTime: number) => {
-      if (!startTime) startTime = currentTime;
-      const progress = Math.min((currentTime - startTime) / duration, 1);
-      setCount(Math.floor(progress * end));
-      if (progress < 1) {
-        requestAnimationFrame(animate);
-      }
-    };
-    requestAnimationFrame(animate);
-  }, [end, duration, hasStarted]);
-
-  return { count, ref };
+// Simplified counter hook to prevent blank page issues
+const useCountUp = (end: number) => {
+  return { count: end, ref: useRef<HTMLDivElement>(null) };
 };
 
 const Index = () => {
@@ -60,9 +20,9 @@ const Index = () => {
   };
 
   // Stats counters
-  const promptsRefined = useCountUp(12500, 2000);
-  const activeUsers = useCountUp(3200, 2000);
-  const promptTemplates = useCountUp(150, 1500);
+  const promptsRefined = useCountUp(12500);
+  const activeUsers = useCountUp(3200);
+  const promptTemplates = useCountUp(150);
 
   return (
     <div className="min-h-screen bg-gradient-hero flex flex-col relative overflow-hidden scroll-smooth">
@@ -141,10 +101,7 @@ const Index = () => {
 
       {/* Social Proof Stats Section */}
       <section className="container mx-auto px-4 py-8 md:py-12 relative z-10">
-        <div 
-          ref={promptsRefined.ref}
-          className="max-w-4xl mx-auto"
-        >
+        <div className="max-w-4xl mx-auto">
           <div className="grid grid-cols-3 gap-2 sm:gap-4 md:gap-8">
             {/* Stat 1: Prompts Refined */}
             <div className="text-center glass rounded-lg md:rounded-xl p-3 sm:p-4 md:p-8 border border-primary/20 hover:border-primary/40 transition-all duration-300 group">
@@ -160,10 +117,7 @@ const Index = () => {
             </div>
 
             {/* Stat 2: Active Users */}
-            <div 
-              ref={activeUsers.ref}
-              className="text-center glass rounded-lg md:rounded-xl p-3 sm:p-4 md:p-8 border border-secondary/20 hover:border-secondary/40 transition-all duration-300 group"
-            >
+            <div className="text-center glass rounded-lg md:rounded-xl p-3 sm:p-4 md:p-8 border border-secondary/20 hover:border-secondary/40 transition-all duration-300 group">
               <div className="flex items-center justify-center gap-2 mb-1 md:mb-2">
                 <Users className="w-4 h-4 md:w-5 md:h-5 text-secondary opacity-70" />
               </div>
@@ -176,10 +130,7 @@ const Index = () => {
             </div>
 
             {/* Stat 3: Prompt Templates */}
-            <div 
-              ref={promptTemplates.ref}
-              className="text-center glass rounded-lg md:rounded-xl p-3 sm:p-4 md:p-8 border border-primary/20 hover:border-primary/40 transition-all duration-300 group"
-            >
+            <div className="text-center glass rounded-lg md:rounded-xl p-3 sm:p-4 md:p-8 border border-primary/20 hover:border-primary/40 transition-all duration-300 group">
               <div className="flex items-center justify-center gap-2 mb-1 md:mb-2">
                 <LayoutTemplate className="w-4 h-4 md:w-5 md:h-5 text-primary opacity-70" />
               </div>
