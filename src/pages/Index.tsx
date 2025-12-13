@@ -4,7 +4,7 @@ import Footer from "@/components/Footer";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 import { ArrowRight, Sparkles, Zap, Brain, Lightbulb, Film, Gauge, PlayCircle, PenTool, Palette, FileCheck, MessageSquare, Layers, BookOpen, Users, Copy, LayoutTemplate } from "lucide-react";
 import { Link } from "react-router-dom";
-import { useEffect, useState, useRef } from "react";
+import { useRef } from "react";
 
 // Simplified counter hook to prevent blank page issues
 const useCountUp = (end: number) => {

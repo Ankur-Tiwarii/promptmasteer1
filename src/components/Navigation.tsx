@@ -1,6 +1,6 @@
 import { Link, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { Home, LayoutDashboard, LogIn, LogOut, History, BookOpen, Layers, Users, Upload, Sparkles, Menu, X } from "lucide-react";
+import { Home, LayoutDashboard, LogIn, LogOut, History, BookOpen, Layers, Users, Upload, Sparkles, Menu, X, LayoutTemplate } from "lucide-react";
 import { useEffect, useState } from "react";
 import { useToast } from "@/hooks/use-toast";
 import { auth } from "@/firebase";
@@ -79,6 +79,7 @@ export const Navigation = () => {
         <div className="hidden md:flex items-center gap-1 lg:gap-2">
           <NavLink to="/" icon={Home} label="Home" />
           <NavLink to="/refine" icon={Sparkles} label="Refine" />
+          <NavLink to="/templates" icon={LayoutTemplate} label="Templates" />
           <NavLink to="/presets" icon={Layers} label="Master Prompts" />
           <NavLink to="/courses" icon={BookOpen} label="Courses" />
           <NavLink to="/community" icon={Users} label="Community" />
@@ -151,6 +152,16 @@ export const Navigation = () => {
               >
                 <Sparkles className="w-6 h-6" />
                 Refine Prompt
+              </Link>
+              <Link
+                to="/templates"
+                onClick={() => setMobileMenuOpen(false)}
+                className={`flex items-center gap-4 text-lg font-medium py-4 px-5 rounded-xl transition-all border ${
+                  location.pathname === "/templates" ? "text-primary bg-primary/15 border-primary/30" : "text-foreground hover:bg-primary/10 border-transparent hover:border-primary/20"
+                }`}
+              >
+                <LayoutTemplate className="w-6 h-6" />
+                Templates
               </Link>
               <Link
                 to="/presets"

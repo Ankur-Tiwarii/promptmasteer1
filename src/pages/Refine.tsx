@@ -30,9 +30,10 @@ const Refine = () => {
   const [isLoading, setIsLoading] = useState(false);
   const { toast } = useToast();
 
-  // Check for example prompt and style in URL params, and preset prompts from localStorage
+  // Check for example prompt, template, style in URL params, and preset prompts from localStorage
   useEffect(() => {
     const examplePrompt = searchParams.get("example");
+    const templatePrompt = searchParams.get("template");
     const styleParam = searchParams.get("style");
     const presetPrompt = localStorage.getItem("presetPrompt");
     
@@ -43,6 +44,10 @@ const Refine = () => {
       setTimeout(() => {
         document.querySelector('.refine-card')?.scrollIntoView({ behavior: 'smooth', block: 'center' });
       }, 100);
+    } else if (templatePrompt) {
+      setInputPrompt(decodeURIComponent(templatePrompt));
+      // Set style to marketing for ad templates
+      setOutputStyle("marketing");
     } else if (examplePrompt) {
       setInputPrompt(decodeURIComponent(examplePrompt));
     }

@@ -20,6 +20,7 @@ const categories = [
   "UI/UX",
   "Anime / Stylized",
   "Horror / Thriller Writing",
+  "Ad Generation",
 ];
 
 const Presets = () => {
